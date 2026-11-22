@@ -117,8 +117,10 @@
   const ST_LBL = { live: '배포', local: '대기', todo: '아직', kept: '유지' };
   const progress = f => { if (!f.status) return ''; const g = f.games.length, done = f.games.filter(id => ['live', 'kept'].includes(f.status[id])).length;
     return `<span class="fix-prog ${done === g ? 'all' : ''}">반영 ${done}/${g}</span>`; };
+  // priority chips with nothing left (user 2026-11-22: "보완된건 삭제해") are hidden
+  $('#priFilter').querySelectorAll('[data-p]').forEach(c => { if (c.dataset.p !== 'all' && !A.fixes.some(f => f.pri === c.dataset.p)) c.hidden = true; });
   function fixes(pri) {
-    const groups = ['높음', '중간', '낮음'].filter(p => pri === 'all' || p === pri);
+    const groups = ['높음', '중간', '낮음'].filter(p => (pri === 'all' || p === pri) && A.fixes.some(f => f.pri === p));   // (done items are deleted from the list: an empty level shows nothing)
     $('#fixList').innerHTML = groups.map(p => {
       const items = A.fixes.filter(f => f.pri === p);
       return `<div class="pri-group"><h3><b class="pri ${PCLS[p]}">${p}</b>${items.length}개</h3>${items.map(f => `

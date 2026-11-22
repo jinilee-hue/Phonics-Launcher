@@ -253,11 +253,11 @@
       "cells": {
         "eye-catch": [
           "ok",
-          "별 + 카드 앨범"
+          "별 + 카드 → 캐릭터"
         ],
         "magic-block": [
           "ok",
-          "별 + 카드 앨범"
+          "별 + 블럭 → 동물"
         ],
         "phonics-match": [
           "ok",
@@ -265,7 +265,7 @@
         ],
         "croco": [
           "ok",
-          "카드 앨범"
+          "카드 → 캐릭터"
         ],
         "word-mashup": [
           "ok",
@@ -561,132 +561,6 @@
   ],
   "fixes": [
     {
-      "id": "F0",
-      "pri": "높음",
-      "title": "공통: 인트로 Skip + 말하기 Jump 버튼 (모든 게임)",
-      "games": [
-        "toy-catch",
-        "puzzle",
-        "magic-block",
-        "eye-catch",
-        "croco",
-        "word-mashup"
-      ],
-      "why": "사용자 공통 규칙. 인트로·규칙 설명에는 Skip, 아이가 말해야 하는 곳에는 Jump 버튼을 둔다. 기준은 Phonics Match의 Jump 버튼(점프하는 아이 아이콘, 말 안 하면 표시)과 각 게임의 Skip. Skip 없음: Toy Catch·Puzzle(Magic Block은 첫 판 설명 음성). Jump 없음: Magic Block·Croco(무한 반복)·Eye Catch·Word Mashup·Puzzle(자동으로만 넘어감).",
-      "status": {
-        "toy-catch": "live",
-        "magic-block": "live",
-        "eye-catch": "live",
-        "croco": "live",
-        "word-mashup": "live",
-        "puzzle": "live"
-      },
-      "note": "2026-11-22: 공통 규칙은 phonics-kit README. JUMP 색은 게임별(Eye-Catch 노랑). 설명 SKIP은 흰 반투명 알약."
-    },
-    {
-      "id": "F1",
-      "pri": "높음",
-      "title": "공통 진도 저장 + 레벨 고르기·이어 하기",
-      "games": [
-        "eye-catch",
-        "magic-block",
-        "croco",
-        "word-mashup",
-        "toy-catch",
-        "ring-ding-dong",
-        "puzzle"
-      ],
-      "why": "Match 말고는 다시 들어오면 처음부터다. 게임들이 모두 jinilee-hue.github.io라 localStorage를 같이 쓸 수 있어서, 공통 키(예: phonics.progress) 하나로 게임별 최고 단계·별을 저장하면 런처에서도 보여 줄 수 있다.",
-      "status": {
-        "eye-catch": "live",
-        "magic-block": "live",
-        "toy-catch": "live",
-        "croco": "live",
-        "word-mashup": "live",
-        "ring-ding-dong": "live",
-        "puzzle": "live"
-      },
-      "note": "2026-11-22: 공통 키 phonics.progress(phonics-kit/phonics-progress.js). 레벨 없는 게임은 기록만(사용자 결정), Croco는 레벨 고르기·이어 하기. Puzzle도 레벨 고르기·이어 하기 — 퍼즐판 LEVEL 탭에서 고른다."
-    },
-    {
-      "id": "F3",
-      "pri": "높음",
-      "title": "발음 판정 예외 규칙 통일",
-      "games": [
-        "magic-block",
-        "croco",
-        "phonics-match",
-        "word-mashup"
-      ],
-      "why": "키 없음·인식기 실패 때 Magic Block은 아무 소리나 통과, Croco는 아무 소리나 통과, Match는 보상 없음, Word Mashup은 글자 비교로 아주 느슨하다. phonics-kit에 공통 규칙(재시도 횟수, 실패 시 처리, 보상 여부)을 정하고 같은 판정(analyze + judge)을 쓴다.",
-      "status": {
-        "magic-block": "live",
-        "croco": "live",
-        "phonics-match": "live",
-        "word-mashup": "live"
-      },
-      "note": "2026-11-22: 판정 불가 → 넘어가고 보상 없음(사용자 결정). Eye-Catch는 그림 누르기 모드 삭제·판정 강화까지 배포."
-    },
-    {
-      "id": "F4",
-      "pri": "높음",
-      "title": "가짜 반 순위 빼기",
-      "games": [
-        "ring-ding-dong"
-      ],
-      "why": "결과 화면의 Class Ranking이 하드코딩된 예시인데 '연동 전' 표시가 지워져 진짜처럼 보인다. 빼거나 '예시'를 다시 표시한다.",
-      "status": {
-        "ring-ding-dong": "kept"
-      },
-      "note": "2026-11-22: My Records로 바꿨다가 사용자 결정으로 Class Ranking 유지(\"링딩동은 그냥 Class Ranking으로\")."
-    },
-    {
-      "id": "F5",
-      "pri": "높음",
-      "title": "게임마다 학습 범위 정리",
-      "games": [
-        "phonics-match",
-        "toy-catch",
-        "word-mashup",
-        "ring-ding-dong"
-      ],
-      "why": "4개는 U1L1 Mm이 아닌 다른 범위(FPR K 전체, m·a·s·t, 합성어, 복수 -s)다. 세트 목표를 정하고 게임마다 대상 레슨을 런처·TRD에 분명히 적거나 레슨팩 기반으로 맞춘다.",
-      "status": {
-        "phonics-match": "live",
-        "toy-catch": "live",
-        "word-mashup": "live",
-        "ring-ding-dong": "live"
-      },
-      "note": "2026-11-22: 게임 카드·TRD에 학습 범위(scope) 줄 추가. Word Mashup·링딩동은 문법 게임으로 분류(필터 칩 \"문법\")."
-    },
-    {
-      "id": "F6",
-      "pri": "중간",
-      "title": "세트 공통 보상: 스티커북 하나로 모으기",
-      "games": [
-        "eye-catch",
-        "magic-block",
-        "phonics-match",
-        "croco",
-        "word-mashup",
-        "toy-catch",
-        "ring-ding-dong",
-        "puzzle"
-      ],
-      "why": "게임마다 점수·코인·별이 따로고 쓸 곳이 없다. 같은 도메인이라 공통 스티커북(단어 스티커)을 두고, 어느 게임에서 맞힌 단어든 같은 책에 모이게 하면 세트 전체를 다시 할 이유가 된다.",
-      "status": {
-        "eye-catch": "kept",
-        "magic-block": "kept",
-        "phonics-match": "kept",
-        "croco": "kept",
-        "word-mashup": "kept",
-        "toy-catch": "kept",
-        "ring-ding-dong": "kept",
-        "puzzle": "kept"
-      },
-      "note": "사용자 결정(2026-11-22): 공통 스티커북 대신 게임마다 모으는 곳 — 카드 앨범(Eye-Catch·Magic Block·Croco), 인형 모음(Toy Catch), 종 꾸미기(Ring Ding Dong), 도감 카드(Word Mashup), 옷(Match), 스티커북(Puzzle). 점수 차감도 모든 게임에 있다."
-    },
-    {
       "id": "F7",
       "pri": "중간",
       "title": "2인 전용 게임에 혼자 하기 추가",
@@ -698,29 +572,6 @@
       "why": "혼자 있는 아이는 할 수 없다. 튜터나 Coco 같은 컴퓨터 상대, 또는 연습 모드를 둔다."
     },
     {
-      "id": "F8",
-      "pri": "중간",
-      "title": "언어 토글 범위·기본값 통일",
-      "games": [
-        "eye-catch",
-        "phonics-match",
-        "word-mashup",
-        "toy-catch",
-        "ring-ding-dong",
-        "puzzle"
-      ],
-      "why": "기본값이 한국어·영어로 갈리고, 음성만 바뀌는 게임과 화면 글자까지 바뀌는 게임이 섞였다. Word Mashup은 토글이 없다. 기본값과 바뀌는 범위를 하나로 정한다.",
-      "status": {
-        "eye-catch": "live",
-        "phonics-match": "live",
-        "word-mashup": "kept",
-        "toy-catch": "live",
-        "ring-ding-dong": "live",
-        "puzzle": "live"
-      },
-      "note": "타이틀에만 · 처음 한국어 · 음성과 말풍선만 바뀌고 화면 글자는 영어. 저장은 게임마다 따로. Word Mashup은 별도 — 언어 선택 없이 영어(사용자 결정)."
-    },
-    {
       "id": "F9",
       "pri": "중간",
       "title": "글자·숫자로 정답이 보이는 단서 줄이기",
@@ -730,23 +581,6 @@
         "ring-ding-dong"
       ],
       "why": "인형 옷의 큰 첫 글자, 블록 끝면의 큰 글자, 카드의 개수 숫자 때문에 소리를 안 듣고 모양만 맞춰도 풀린다. 단계가 올라가면 단서를 줄인다."
-    },
-    {
-      "id": "F10",
-      "pri": "중간",
-      "title": "상단 바 표준 맞추기",
-      "games": [
-        "croco",
-        "word-mashup",
-        "toy-catch"
-      ],
-      "why": "Croco 버튼 6.2u(약 39px), Word Mashup 자체 상단 바, Toy Catch는 결과 화면에도 언어 토글이 보인다.",
-      "status": {
-        "croco": "live",
-        "toy-catch": "live",
-        "word-mashup": "kept"
-      },
-      "note": "Croco·Toy Catch는 표준. Word Mashup은 자체 상단 바를 그대로 둔다(사용자 결정)."
     },
     {
       "id": "F11",
@@ -784,27 +618,6 @@
       "why": "단어별 정답률·아이별 진도를 볼 곳이 없다. F1 공통 저장이 생기면 런처에 교사 보기를 붙일 수 있다."
     },
     {
-      "id": "F14",
-      "pri": "낮음",
-      "title": "README·TRD 최신화",
-      "games": [
-        "magic-block",
-        "phonics-match",
-        "word-mashup",
-        "toy-catch",
-        "ring-ding-dong"
-      ],
-      "why": "코드와 다른 설명이 남아 있다. TRD는 이 런처에 있다.",
-      "status": {
-        "magic-block": "live",
-        "phonics-match": "live",
-        "word-mashup": "live",
-        "toy-catch": "live",
-        "ring-ding-dong": "live"
-      },
-      "note": "2026-11-22: 다섯 게임 README를 코드에 맞췄다(Word Mashup은 README.md 새로 씀)."
-    },
-    {
       "id": "F15",
       "pri": "낮음",
       "title": "타이틀 나가기 동작 통일",
@@ -822,19 +635,6 @@
         "word-mashup"
       ],
       "why": "페이지 제목 'Prompt Crash', 실행되지 않는 토스트 코드, 빨간 화면 깜빡임 오답 연출(어린 나이에 거침)."
-    },
-    {
-      "id": "F17",
-      "pri": "낮음",
-      "title": "Eye Catch 누르기 모드 차례 확인",
-      "games": [
-        "eye-catch"
-      ],
-      "why": "마이크가 없을 때 버튼을 누른 아이가 아니어도 누구든 그림을 누르면 정답이 된다.",
-      "status": {
-        "eye-catch": "live"
-      },
-      "note": "2026-11-22: 그림 누르기 모드를 없앴다 — 마이크·판정이 안 되면 정답만 보여 주고 아무도 카드를 갖지 않는다(말해야만 카드)."
     }
   ],
   "statusLegend": {
