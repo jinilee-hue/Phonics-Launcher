@@ -502,8 +502,8 @@
           "표준"
         ],
         "word-mashup": [
-          "no",
-          "자체 상단 바"
+          "na",
+          "별도 유지"
         ],
         "toy-catch": [
           "ok",
@@ -732,9 +732,10 @@
       "why": "Croco 버튼 6.2u(약 39px), Word Mashup 자체 상단 바, Toy Catch는 결과 화면에도 언어 토글이 보인다.",
       "status": {
         "croco": "live",
-        "toy-catch": "live"
+        "toy-catch": "live",
+        "word-mashup": "kept"
       },
-      "note": "Croco·Toy Catch는 표준. Word Mashup 남음."
+      "note": "Croco·Toy Catch는 표준. Word Mashup은 자체 상단 바를 그대로 둔다(사용자 결정)."
     },
     {
       "id": "F11",
