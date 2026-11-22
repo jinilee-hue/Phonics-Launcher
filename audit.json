@@ -520,45 +520,6 @@
       }
     },
     {
-      "id": "teacher",
-      "name": "교사 기능",
-      "desc": "아이별·단어별 결과, 레벨 지정",
-      "cells": {
-        "eye-catch": [
-          "no",
-          "없음"
-        ],
-        "magic-block": [
-          "no",
-          "없음"
-        ],
-        "phonics-match": [
-          "no",
-          "없음"
-        ],
-        "croco": [
-          "no",
-          "없음"
-        ],
-        "word-mashup": [
-          "no",
-          "없음"
-        ],
-        "toy-catch": [
-          "no",
-          "없음"
-        ],
-        "ring-ding-dong": [
-          "no",
-          "없음"
-        ],
-        "puzzle": [
-          "no",
-          "없음"
-        ]
-      }
-    },
-    {
       "id": "docs",
       "name": "문서 최신",
       "desc": "코드와 문서가 맞는지",

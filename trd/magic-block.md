@@ -5,7 +5,7 @@ title_ko: 매직 블록
 tagline: 친구와 번갈아 m 블럭을 빼고 그 단어를 소리 내어 읽는 3D 젠가
 players: 2인
 skill: 첫글자 m 단어 고르기(같은 운의 다른 첫소리 단어와 구별) + 튜터를 따라 단어 말하기
-scope: FPR K U1L1 Mm · 레슨팩 m 단어 18개 + m이 없는 다른 알파벳 단어 26개
+scope: FPR K U1L1 Mm · 레슨팩 m단어 18개 + m 없는 단어 26개(레슨팩 9개 포함)
 stack: Vite + TypeScript + three.js + cannon-es (기기 안 인식 transformers.js whisper-tiny.en)
 repo: https://github.com/jinilee-hue/Magic-Block
 url: https://jinilee-hue.github.io/Magic-Block/
@@ -42,7 +42,7 @@ updated: 2026-11-22
 | 구분 | 내용 | 개수 | 출처 |
 |---|---|---|---|
 | m단어 | mail man map mask mat match meat mice milk mirror mitt monkey moon mop mouse mouth mug mushroom | 18 | `tools/build_words.py`의 `M_WORDS` = 레슨팩 FP.K.U1L1의 m 단어 전부(2026-11-22, mice는 팩에만 있음). |
-| 다른 단어 | pan van fan cap tap cat hat bat hop pop rug tail turkey spoon sit pie tie box sun dog sock six ten bag duck fish | 26 | `OTHER`: FPR K Unit 1 단어 중 m이 하나도 없는 것(jam·lemon → duck·fish, 2026-11-22). |
+| 다른 단어 | pan van fan cap tap cat hat bat hop pop rug tail turkey spoon sit lid egg doll heart gate fox gift kite ten sun dog | 26 | `OTHER`: m이 하나도 없는 단어. 레슨팩의 m 없는 단어 9개(lid egg doll heart gate fox gift kite ten, `PACK_OTHER`) + m단어와 운이 같은 Unit 1 단어 15개 + sun, dog. |
 | 그림 카드 | m단어 18개 전부 | 18 | 모두 레슨팩 FP.K.U1L1 그림(대표이미지). |
 | 단어 음성 | m단어, /m/ 낱소리 | 137 클립(튜터 대사 포함) | 레슨팩 FP.K.U1L1의 공식 음성(m단어 18 + ten). 팩에 없는 단어는 phonics-api TTS, 다른 첫소리는 FPR K 공식 녹음이다. |
 
@@ -199,5 +199,6 @@ updated: 2026-11-22
   - 나가기를 두 번 탭해야 한다고 적혀 있다(README:28). 실제로는 한 번이다.
   - TTS를 Qwen3-TTS aiden이라고 적고 있다(README:64). 실제로는 Ava Multilingual이다.
 - [반영] m단어를 레슨팩 18개로 맞춰 모든 m단어에 레슨팩 그림·음성이 있다(2026-11-22). mitten·my·mailbox는 빠졌다.
+- [반영] m 없는 단어에 레슨팩 단어 9개를 넣었다(2026-11-22). 음성도 레슨팩 녹음.
 - **[낮음]** 인트로 영상과 동물별 에셋은 아직 없다(README:33, 35).
 - **[낮음]** 3D 블럭(특히 끝면)의 실제 탭 크기를 측정하지 않았다. 5세 손가락 기준으로 확인이 필요하다.
