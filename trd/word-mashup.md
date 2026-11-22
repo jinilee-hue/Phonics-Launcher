@@ -5,7 +5,7 @@ title_ko: 워드 매시업
 tagline: 그림카드 두 장을 부딪쳐 합성어를 만들고 따라 말해요
 players: 1인
 skill: 영어 합성어 만들기(sun+flower) + 합성어 따라 말하기 — 단어 단위, 낱자-소리 파닉스 아님
-scope: 교재 밖 · 영어 합성어 43쌍(단어 단위, 낱자-소리 파닉스 아님)
+scope: 문법 · 합성어 43쌍(단어 단위 — 낱자-소리 파닉스 아님)
 stack: Vite + TypeScript + Phaser 3 + three.js
 repo: https://github.com/jinilee-hue/phonics-wordmashup-3D
 url: https://jinilee-hue.github.io/phonics-wordmashup-3D/

@@ -111,20 +111,60 @@
           "레벨 1 = 팩 12단어 (+L2~10)"
         ],
         "word-mashup": [
-          "no",
-          "합성어 43쌍 하드코딩"
+          "na",
+          "문법 게임(합성어) — 파닉스 레슨팩 대상 아님"
         ],
         "toy-catch": [
           "no",
           "m·a·s·t 인형 하드코딩"
         ],
         "ring-ding-dong": [
-          "no",
-          "단·복수 -s 문법, Mm 아님"
+          "na",
+          "문법 게임(복수 -s) — 파닉스 레슨팩 대상 아님"
         ],
         "puzzle": [
           "ok",
           "팩 m 단어 18개"
+        ]
+      }
+    },
+    {
+      "id": "unit",
+      "name": "학습 단위",
+      "info": true,
+      "desc": "FPR K 교재 기준 K 전체 · 유닛 · 레슨 (참고용 — 점검 점수에 세지 않음, 2026-11-22)",
+      "cells": {
+        "eye-catch": [
+          "info",
+          "레슨 · U1L1 Mm (레슨팩 12단어)"
+        ],
+        "magic-block": [
+          "info",
+          "레슨 · U1L1 Mm (팩 m단어 17 + mitten·my·mailbox, 함정 26)"
+        ],
+        "phonics-match": [
+          "info",
+          "K 전체 · Unit 1–6 첫소리 (동물·사물·과일)"
+        ],
+        "croco": [
+          "info",
+          "유닛 1–2 · Lesson 1–10 (레벨 = 레슨)"
+        ],
+        "word-mashup": [
+          "info",
+          "문법 · 합성어 (영어 합성어 43쌍)"
+        ],
+        "toy-catch": [
+          "info",
+          "유닛 · Unit 1의 m·a·s·t (p 제외, 오답 c·d·f)"
+        ],
+        "ring-ding-dong": [
+          "info",
+          "문법 · NP-01 복수 -s (5세 K만 열림)"
+        ],
+        "puzzle": [
+          "info",
+          "레슨 · U1L1 Mm (레슨팩 18단어)"
         ]
       }
     },
@@ -656,7 +696,7 @@
         "word-mashup": "live",
         "ring-ding-dong": "live"
       },
-      "note": "2026-11-22: 게임 카드·TRD에 학습 범위(scope) 줄 추가."
+      "note": "2026-11-22: 게임 카드·TRD에 학습 범위(scope) 줄 추가. Word Mashup·링딩동은 문법 게임으로 분류(필터 칩 \"문법\")."
     },
     {
       "id": "F6",

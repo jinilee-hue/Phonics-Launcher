@@ -26,13 +26,14 @@
   // ── game cards ───────────────────────────────────────────────────────────────────────────────────
   const facts = g => {
     const p = g.players || '';
-    return { solo: /1/.test(p) || cell(g.id, 'solo')[0] === 'ok', duo: /2/.test(p), speak: ['ok', 'part'].includes(cell(g.id, 'speak')[0]), pack: cell(g.id, 'content')[0] === 'ok' };
+    return { solo: /1/.test(p) || cell(g.id, 'solo')[0] === 'ok', duo: /2/.test(p), speak: ['ok', 'part'].includes(cell(g.id, 'speak')[0]), pack: cell(g.id, 'content')[0] === 'ok', grammar: /^문법/.test(g.scope || '') };
   };
   function cards(filter) {
     $('#grid').innerHTML = G.map((g, i) => {
       const f = facts(g);
       if (filter !== 'all' && !f[filter]) return '';
-      const okN = A.criteria.filter(c => (c.cells[g.id] || [])[0] === 'ok').length, all = A.criteria.filter(c => (c.cells[g.id] || [])[0] !== 'na').length;
+      const CR = A.criteria.filter(c => !c.info);          // info rows (학습 단위) are for reading, not scored
+      const okN = CR.filter(c => (c.cells[g.id] || [])[0] === 'ok').length, all = CR.filter(c => (c.cells[g.id] || [])[0] !== 'na').length;
       return `<article class="card">
         <div class="shot"><img src="${esc(g.img)}" alt="${esc(g.title)} 타이틀 화면" loading="lazy"><span class="num">${String(i + 1).padStart(2, '0')}</span></div>
         <div class="card-body">
@@ -45,7 +46,7 @@
           </div>
           ${g.skill ? `<div class="dots" title="학습 목표">${esc(g.skill)}</div>` : ''}
           ${g.scope ? `<p class="scope" title="학습 범위"><b>범위</b>${esc(g.scope)}</p>` : ''}
-          <div class="dots" title="점검표 '있음' 항목 수">${A.criteria.map(c => `<i class="st ${(c.cells[g.id] || ['na'])[0]}" title="${esc(c.name)}: ${esc((c.cells[g.id] || [])[1] || '')}"></i>`).join('')}<span>&nbsp;${okN}/${all}</span></div>
+          <div class="dots" title="점검표 '있음' 항목 수">${CR.map(c => `<i class="st ${(c.cells[g.id] || ['na'])[0]}" title="${esc(c.name)}: ${esc((c.cells[g.id] || [])[1] || '')}"></i>`).join('')}<span>&nbsp;${okN}/${all}</span></div>
           <div class="card-actions">
             <a class="btn primary" href="${esc(g.url)}" target="_blank" rel="noopener">${ICON.play}플레이</a>
             <button class="btn teal" data-trd="${g.id}" ${g.has_trd ? '' : 'disabled'}>${ICON.doc}TRD</button>
@@ -102,6 +103,7 @@
   $('#matrix').innerHTML = `<thead><tr><th>점검 기준</th>${A.games.map(id => `<th><img src="${esc(byId[id].img)}" alt="">${esc(byId[id].title)}</th>`).join('')}</tr></thead><tbody>`
     + A.criteria.map(c => `<tr><th>${esc(c.name)}<small>${esc(c.desc)}</small></th>${A.games.map(id => {
       const [s, note] = c.cells[id] || ['na', ''];
+      if (s === 'info') return `<td class="info"><div class="cell"><span>${esc(note)}</span></div></td>`;   // reading only, no status dot
       return `<td class="${s}"><div class="cell"><i class="st ${s}" aria-label="${ST[s]}"></i><span>${esc(note)}</span></div></td>`;
     }).join('')}</tr>`).join('') + '</tbody>';
   $('#matrix').querySelectorAll('thead th img').forEach((im, i) => { im.style.cursor = 'pointer'; im.addEventListener('click', () => openTrd(A.games[i])); });

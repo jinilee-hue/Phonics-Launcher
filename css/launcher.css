@@ -199,3 +199,6 @@ main { max-width: 1320px; margin: 0 auto; padding: 20px 16px 60px; }
 .fix-prog { margin-left: 8px; font: 800 12px/1 var(--body); padding: 4px 8px; border-radius: 999px; background: var(--part-soft); color: color-mix(in srgb, var(--part) 55%, black); vertical-align: 2px; }
 .fix-prog.all { background: var(--ok-soft); color: color-mix(in srgb, var(--ok) 65%, black); }
 .fix-note { font-size: 12.5px; color: var(--ink-3); margin: 6px 0 0; }
+/* 학습 단위 row (info, 2026-11-22): reading only — no status colour, the unit word bold */
+.matrix td.info { background: var(--card); }
+.matrix td.info .cell span { font-weight: 700; color: var(--ink); }
