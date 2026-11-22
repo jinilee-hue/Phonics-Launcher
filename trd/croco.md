@@ -5,7 +5,7 @@ title_ko: 크로코 파닉스
 tagline: 악어 이빨을 번갈아 누르고, 튀어나온 그림 단어를 따라 말해요
 players: 2인
 skill: 레벨 음가 + 단어 듣기 → 단어 따라 말하기(phonics-api 판정), FPR K Lesson 1–10
-scope: FPR K Lesson 1–10 · 레벨 1 = 레슨팩 FP.K.U1L1 12단어, 레벨 2–10 = 교재 Lesson 단어
+scope: FPR K Lesson 1–10 · 레벨 1 = 레슨팩 FP.K.U1L1 m단어 18개, 레벨 2–10 = 교재 Lesson 단어
 stack: Vanilla JS + three.js r186(IIFE, 빌드 없음)
 repo: https://github.com/jinilee-hue/Croco-Phonics
 url: https://jinilee-hue.github.io/Croco-Phonics/
@@ -35,12 +35,12 @@ updated: 2026-11-22
 ## 3. 콘텐츠·데이터
 | 레벨 | 레슨 | 단어 수 |
 |---|---|---|
-| 1 | L1 Mm | 12 (man, map, meat, milk, mirror, mitt, monkey, moon, mop, mouse, mug, mushroom) |
+| 1 | L1 Mm | 18 (mail, man, map, mask, mat, match, meat, mice, milk, mirror, mitt, monkey, moon, mop, mouse, mouth, mug, mushroom) |
 | 2–10 | L2 Short a · L3 Ss · L4 Tt · L5 Pp · L6 Nn · L7 Short i · L8 Cc · L9 Ff · L10 Dd | 8 · 9 · 8 · 7 · 6 · 6 · 7 · 10 · 8 |
 
 - 데이터 파일: `js/words.js`(`window.CROCO_WORDS = {levels, notYet, words}`) — `tools/build_words.py`가 생성. 직접 편집하지 않는다.
 - 출처: SAD·FPR 단어 연구 자료집 `~/dev/sadfpr-studio/data/b2_book_FPRK.json`의 레슨 쪽 단어 중 그 레슨 소리를 가진 것. 공식 그림카드와 음성이 둘 다 있는 단어만 쓰고 기능어는 뺀다.
-- 레슨팩 `FP.K.U1L1`은 레벨 1 단어의 음성과 카드 그림에만 쓴다. 레벨 1은 12단어로 고정(`build_words.py:188` assert).
+- 레슨팩 `FP.K.U1L1`은 레벨 1의 단어 목록·음성·카드 그림에 쓴다. 레벨 1 = 레슨팩 m단어 18개(`tools/build_words.py` assert).
 - 판 구성: 이빨 10개에 함정 단어 1개, 나머지는 그 레벨 다른 단어(부족하면 다시 섞어 채움, `game.js:400-412`).
 - 판정용 기대 소리열: `js/phonemes.js`(`tools/build_phonemes.py`, 서버 G2P).
 - 다른 레슨 추가: 그림카드와 음성이 생기면 `build_words.py` → `build_voice.py`를 다시 실행하면 레벨이 자동으로 늘어난다. L11 이후는 플레이 가능한 단어가 4개 미만이라 막혀 있다(`notYet`, 예: Hh 1단어, Ll 0단어).
@@ -63,7 +63,7 @@ updated: 2026-11-22
 ## 6. 튜터·음성·발음 판정
 - 튜터: 3D 악어(`js/croc.js`, SDF 클레이 모델). 말풍선 + 음성, 표정(안전 ^^ / 함정 놀람), 콧김·발가락 움직임. 2026-11-20 "기존 튜터 유지" 결정에 해당한다.
 - 튜터 음성: `tools/build_voice.py` 기본 엔진 phonics-api TTS — Azure en-US-AvaMultilingualNeural을 예전 'aiden' 목소리에 맞춰 음높이·빠르기 조정(EN ×1.109/×1.035, KO ×1.030/×1.169). 예전 회사 TTS는 `--engine qwen`.
-- 단어 음성: 레슨팩(L1 12단어 + ten, doll) → Magic Block → Phonics Island 순. 없던 9단어(sip, toy, paint 등)는 TTS. 음가는 공식 FPR K 녹음.
+- 단어 음성: 레슨팩(L1 18단어 + ten, doll) → Magic Block → Phonics Island 순. 없던 9단어(sip, toy, paint 등)는 TTS. 음가는 공식 FPR K 녹음.
 - 발음 판정(`judgeWord`, `:564`):
 
 | 조건 | 동작 |
@@ -79,7 +79,7 @@ updated: 2026-11-22
 - 기준: 화면 비율에 맞춰 크기를 조정한다(`--u = min(1vh, .62vw)`, 세로 화면은 `.95vw`). 16:9, 4:3(1024×768), 세로(820×1180)를 QA한다. 4:3·세로에서는 배경을 1.12~1.3배 확대한다(`fitRoom`).
 - 상단 바: 왼쪽 로고(게임 중 "Level N · 제목" 표시), 가운데 지시 단어 카드(움직이는 덥석 배지 + 다시 듣기), 오른쪽 EN|한 · 소리 · 나가기. 타이틀 왼쪽 위에 phonics-api 키 버튼(`index.html:83`, 게임 중 숨김).
 - 언어 토글: 타이틀에서만 보인다(`css/style.css:505`). 튜터 대사(음성 + 말풍선)와 화면 글자가 바뀐다. 단어·음가는 항상 영어.
-- 버튼 크기: 상단 버튼 6.2u — 1024×768에서 약 39 px(계산값). 이빨은 3D 레이캐스트로 고르고, 이빨 뒤에 더 큰 투명 판정 영역이 있다(`js/stage.js:114`).
+- 버튼 크기: 상단 버튼은 UI 표준(7.6tu, 가장자리 3tu, 가로 화면) — 1024×768에서 44 px, 가장자리 17 px(Toy-Catch와 같은 자리). 이빨은 3D 레이캐스트로 고르고, 이빨 뒤에 더 큰 투명 판정 영역이 있다(`js/stage.js:114`).
 - 하단 양쪽 구석: 플레이어 아바타 + 카드 더미 + 승리 칩. 결과 버튼은 세로 화면에서 위아래로 쌓인다.
 - 예외 상태: 마이크 거부 → 탭 진행. 오프라인 → 소리 감지만. 첫 터치 전 소리 잠김 → 말풍선만 띄우고, 첫 터치에 지금 줄부터 소리 낸다.
 
@@ -150,6 +150,7 @@ updated: 2026-11-22
 - [중간] 함정이 첫 이빨이면(10%) 말하기 0회로 판이 끝난다.
 - [중간] 1인 모드·학급 모드가 없다. 마이크 하나를 같이 써서 누가 말했는지 구분하지 못한다.
 - [낮음] Lesson 11 이후 레벨이 없다(그림카드·음성 부족).
-- [낮음] 상단 버튼(6.2u, 1024×768에서 약 39 px)이 2026-11-20 UI 표준(Toy-Catch식 7.6tu)과 다르다.
+- [반영] 상단 버튼 = UI 표준(1024×768 44 px, 1920×1080 82 px).
+- [반영] 레벨 1 = 레슨팩 m단어 18개(2026-11-22).
 - [낮음] 튜터 설명이 매 방문 자동 재생된다(Skip 가능). 반복 플레이 때 시작이 늦다.
 - [낮음] 문서가 코드와 어긋난다: README BGM 설명(F장조 132 BPM)과 `make_bgm_game.py` 주석이 2026-11-22 정글 그루브로 바뀐 타이틀 곡을 반영하지 못했다. README 음성 절은 회사 TTS 'aiden' 기준이지만 지금 기본 엔진은 phonics-api(Ava)다.

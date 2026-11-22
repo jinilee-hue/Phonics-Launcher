@@ -101,7 +101,7 @@
   // ── check table ──────────────────────────────────────────────────────────────────────────────────
   const ST = { ok: '있음', part: '일부', no: '없음', na: '해당 없음' };
   $('#matrix').innerHTML = `<thead><tr><th>점검 기준</th>${A.games.map(id => `<th><img src="${esc(byId[id].img)}" alt="">${esc(byId[id].title)}</th>`).join('')}</tr></thead><tbody>`
-    + A.criteria.map(c => `<tr><th>${esc(c.name)}<small>${esc(c.desc)}</small></th>${A.games.map(id => {
+    + A.criteria.map(c => `<tr><th title="${esc(c.desc)}">${esc(c.name)}</th>${A.games.map(id => {
       const [s, note] = c.cells[id] || ['na', ''];
       if (s === 'info') return `<td class="info"><div class="cell"><span>${esc(note)}</span></div></td>`;   // reading only, no status dot
       return `<td class="${s}"><div class="cell"><i class="st ${s}" aria-label="${ST[s]}"></i><span>${esc(note)}</span></div></td>`;

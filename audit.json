@@ -13,67 +13,67 @@
   "criteria": [
     {
       "id": "skip",
-      "name": "인트로·설명 Skip 버튼",
-      "desc": "공통 규칙(2026-11-22): 인트로 영상·규칙 설명을 건너뛰는 버튼",
+      "name": "설명 SKIP",
+      "desc": "공통 규칙: 인트로 영상·규칙 설명을 건너뛰는 버튼",
       "cells": {
         "eye-catch": [
           "ok",
-          "설명 SKIP(로고 아래, 흰 반투명)"
+          "SKIP"
         ],
         "magic-block": [
           "ok",
-          "인트로 SKIP + 첫 판 설명 SKIP"
+          "SKIP"
         ],
         "phonics-match": [
           "ok",
-          "데모 보드 SKIP"
+          "SKIP"
         ],
         "croco": [
           "ok",
-          "튜터 설명 Skip"
+          "SKIP"
         ],
         "word-mashup": [
           "ok",
-          "인트로 영상 SKIP"
+          "SKIP"
         ],
         "toy-catch": [
           "ok",
-          "안내 SKIP(오른쪽 아래, 흰 반투명)"
+          "SKIP"
         ],
         "ring-ding-dong": [
           "ok",
-          "인트로 SKIP(1.5초 뒤)"
+          "SKIP"
         ],
         "puzzle": [
           "ok",
-          "설명 시범 + SKIP(오른쪽 아래, 흰 반투명)"
+          "SKIP"
         ]
       }
     },
     {
       "id": "jump",
-      "name": "말하기 Jump(건너뛰기) 버튼",
-      "desc": "공통 규칙(2026-11-22): 말해야 하는 곳마다 건너뛰는 버튼 (Phonics Match의 Jump가 기준)",
+      "name": "말하기 JUMP",
+      "desc": "공통 규칙: 말해야 하는 곳마다 건너뛰는 버튼 (Phonics Match 기준)",
       "cells": {
         "eye-catch": [
           "ok",
-          "노란 JUMP(말하는 쪽), 틀림 2번·침묵 22초·판정 불가 → 카드 없음"
+          "JUMP"
         ],
         "magic-block": [
           "ok",
-          "JUMP(마이크 오른쪽), 블럭 없이 넘어감"
+          "JUMP"
         ],
         "phonics-match": [
           "ok",
-          "Jump 버튼(말 안 하면 표시)"
+          "JUMP"
         ],
         "croco": [
           "ok",
-          "JUMP(카드 윗모서리), 카드 없이 넘어감"
+          "JUMP"
         ],
         "word-mashup": [
           "ok",
-          "JUMP(결과 카드 모서리), 보상 없이 넘어감"
+          "JUMP"
         ],
         "toy-catch": [
           "na",
@@ -85,46 +85,46 @@
         ],
         "puzzle": [
           "ok",
-          "보라 JUMP(마이크 오른쪽), 단어 별 없이 다음 그림"
+          "JUMP"
         ]
       }
     },
     {
       "id": "content",
-      "name": "콘텐츠 = 레슨팩 U1L1 Mm",
-      "desc": "공통 규칙 2b: 단어·그림·음성을 레슨팩에서",
+      "name": "레슨팩 콘텐츠",
+      "desc": "공통 규칙: 단어·그림·음성을 레슨팩에서",
       "cells": {
         "eye-catch": [
           "ok",
-          "팩 12단어"
+          "레슨팩 18단어"
         ],
         "magic-block": [
           "ok",
-          "레슨팩 m단어 18 + m 없는 다른 단어 26"
+          "레슨팩 + 다른 단어"
         ],
         "phonics-match": [
           "no",
-          "동물·사물·과일 3주제, FPR K 전체"
+          "레슨팩 아님"
         ],
         "croco": [
           "ok",
-          "레벨 1 = 팩 12단어 (+L2~10)"
+          "레슨팩(레벨 1)"
         ],
         "word-mashup": [
           "na",
-          "문법 게임(합성어) — 파닉스 레슨팩 대상 아님"
+          "문법 게임"
         ],
         "toy-catch": [
           "no",
-          "m·a·s·t 인형 하드코딩"
+          "레슨팩 아님"
         ],
         "ring-ding-dong": [
           "na",
-          "문법 게임(복수 -s) — 파닉스 레슨팩 대상 아님"
+          "문법 게임"
         ],
         "puzzle": [
           "ok",
-          "팩 m 단어 18개"
+          "레슨팩 18단어"
         ]
       }
     },
@@ -132,45 +132,45 @@
       "id": "unit",
       "name": "학습 단위",
       "info": true,
-      "desc": "FPR K 교재 기준 K 전체 · 유닛 · 레슨 (참고용 — 점검 점수에 세지 않음, 2026-11-22)",
+      "desc": "FPR K 교재 기준 K 전체 · 유닛 · 레슨 (참고용 — 점수에 세지 않음)",
       "cells": {
         "eye-catch": [
           "info",
-          "레슨 · U1L1 Mm (레슨팩 12단어)"
+          "U1L1 Mm"
         ],
         "magic-block": [
           "info",
-          "레슨 · U1L1 Mm (레슨팩 m단어 18, 다른 단어 26 — m 없음)"
+          "U1L1 Mm"
         ],
         "phonics-match": [
           "info",
-          "K 전체 · Unit 1–6 첫소리 (동물·사물·과일)"
+          "K 전체"
         ],
         "croco": [
           "info",
-          "유닛 1–2 · Lesson 1–10 (레벨 = 레슨)"
+          "Lesson 1–10"
         ],
         "word-mashup": [
           "info",
-          "문법 · 합성어 (영어 합성어 43쌍)"
+          "문법 · 합성어"
         ],
         "toy-catch": [
           "info",
-          "유닛 · Unit 1의 m·a·s·t (p 제외, 오답 c·d·f)"
+          "Unit 1"
         ],
         "ring-ding-dong": [
           "info",
-          "문법 · NP-01 복수 -s (5세 K만 열림)"
+          "문법 · 복수 -s"
         ],
         "puzzle": [
           "info",
-          "레슨 · U1L1 Mm (레슨팩 18단어)"
+          "U1L1 Mm"
         ]
       }
     },
     {
       "id": "levels",
-      "name": "레벨·난이도 단계",
+      "name": "레벨",
       "desc": "단계가 있고, 올라갈수록 실제로 어려워지는지",
       "cells": {
         "eye-catch": [
@@ -179,15 +179,15 @@
         ],
         "magic-block": [
           "no",
-          "한 가지 탑"
+          "탑 하나"
         ],
         "phonics-match": [
           "ok",
-          "주제별 6레벨 + 미션 무한"
+          "6레벨"
         ],
         "croco": [
           "part",
-          "레벨 = 레슨, 난이도 같음"
+          "레벨 = 레슨"
         ],
         "word-mashup": [
           "no",
@@ -195,120 +195,120 @@
         ],
         "toy-catch": [
           "no",
-          "4라운드, 'LEVEL 1' 표시만"
+          "4라운드 고정"
         ],
         "ring-ding-dong": [
           "part",
-          "3단계 숨김(?age로만)"
+          "3단계(숨김)"
         ],
         "puzzle": [
           "part",
-          "3레벨(2×2·3×2·3×3) 고르기 가능, 차이는 조각 수"
+          "3레벨"
         ]
       }
     },
     {
       "id": "save",
-      "name": "진행 저장·이어 하기",
+      "name": "진도 저장",
       "desc": "다시 들어왔을 때 이어서 하거나 레벨을 고를 수 있는지",
       "cells": {
         "eye-catch": [
           "ok",
-          "공통 기록 저장(레벨 없음 — 기록만)"
+          "공통 기록"
         ],
         "magic-block": [
           "ok",
-          "공통 기록 저장(레벨 없음 — 기록만)"
+          "공통 기록"
         ],
         "phonics-match": [
           "ok",
-          "레벨·코인·옷 저장 + 공통 기록"
+          "기록 + 레벨·코인"
         ],
         "croco": [
           "ok",
-          "공통 기록 + 레벨 고르기·이어 하기"
+          "기록 + 이어 하기"
         ],
         "word-mashup": [
           "ok",
-          "공통 기록 저장(레벨 없음 — 기록만)"
+          "공통 기록"
         ],
         "toy-catch": [
           "ok",
-          "공통 기록 저장(레벨 없음 — 기록만)"
+          "공통 기록"
         ],
         "ring-ding-dong": [
           "ok",
-          "공통 기록 저장(화면 변화 없음)"
+          "공통 기록"
         ],
         "puzzle": [
           "ok",
-          "공통 기록 + 레벨 고르기·이어 하기(START 옆 격자 칩)"
+          "기록 + 이어 하기"
         ]
       }
     },
     {
       "id": "reward",
-      "name": "보상과 쓸 곳",
+      "name": "보상",
       "desc": "모은 것이 의미가 있는지(쓰기·모으기)",
       "cells": {
         "eye-catch": [
           "no",
-          "가져간 카드 수(승부)뿐"
+          "카드 수뿐"
         ],
         "magic-block": [
           "no",
-          "뽑은 블록 수뿐"
+          "블록 수뿐"
         ],
         "phonics-match": [
           "ok",
-          "코인 → 옷 11개 (별은 저장만, 안 보임)"
+          "코인 → 옷"
         ],
         "croco": [
           "no",
-          "카드가 승패와 무관"
+          "승패와 무관"
         ],
         "word-mashup": [
           "part",
-          "도감 N/43, 별·코인·보석은 쓸 곳 없음"
+          "쓸 곳 없음"
         ],
         "toy-catch": [
           "part",
-          "결과 별 0~3, 저장 안 됨"
+          "별, 저장 안 됨"
         ],
         "ring-ding-dong": [
           "no",
-          "S 토큰, 가짜 반 순위"
+          "S 토큰"
         ],
         "puzzle": [
           "ok",
-          "그림별 별 3개 + 스티커북"
+          "별 + 스티커북"
         ]
       }
     },
     {
       "id": "speak",
-      "name": "말하기·발음 판정",
+      "name": "발음 판정",
       "desc": "아이가 말하고, phonics-api + 기기 안 인식으로 판정하는지",
       "cells": {
         "eye-catch": [
           "ok",
-          "api + whisper, 말해야만 카드(모음·첫소리 규칙)"
+          "api + 기기"
         ],
         "magic-block": [
           "ok",
-          "api + whisper, 판정 불가면 보상 없음"
+          "api + 기기"
         ],
         "phonics-match": [
           "ok",
-          "api + whisper (엄격)"
+          "api + 기기"
         ],
         "croco": [
           "ok",
-          "api 판정, 판정 불가면 카드 없음"
+          "api"
         ],
         "word-mashup": [
           "ok",
-          "api analyze + judge, 말해야 보상"
+          "api"
         ],
         "toy-catch": [
           "no",
@@ -320,42 +320,42 @@
         ],
         "puzzle": [
           "ok",
-          "api analyze + whisper"
+          "api + 기기"
         ]
       }
     },
     {
       "id": "stuck",
-      "name": "막힘 없음(침묵·무입력)",
+      "name": "막힘 없음",
       "desc": "아이가 말을 안 하거나 손을 놓아도 게임이 계속되는지",
       "cells": {
         "eye-catch": [
           "ok",
-          "42초면 정답 공개"
+          "42초면 정답"
         ],
         "magic-block": [
           "ok",
-          "약 20초 뒤 넘어감"
+          "20초 뒤 넘어감"
         ],
         "phonics-match": [
           "ok",
-          "약 20초 뒤 넘어감"
+          "20초 뒤 넘어감"
         ],
         "croco": [
           "ok",
-          "약 20초 뒤 넘어감"
+          "20초 뒤 넘어감"
         ],
         "word-mashup": [
           "ok",
-          "15·28초 안내·힌트"
+          "안내·힌트"
         ],
         "toy-catch": [
           "part",
-          "2라운드부터 안내 없음"
+          "안내 끊김"
         ],
         "ring-ding-dong": [
           "part",
-          "내 차례에 계속 기다림"
+          "계속 기다림"
         ],
         "puzzle": [
           "ok",
@@ -365,28 +365,28 @@
     },
     {
       "id": "nomic",
-      "name": "마이크 없을 때 대체",
+      "name": "마이크 없을 때",
       "desc": "마이크 거부·없음에서도 진행되는지",
       "cells": {
         "eye-catch": [
           "ok",
-          "판정 불가면 정답만, 카드 없음(규칙)"
+          "보상 없이 넘어감"
         ],
         "magic-block": [
           "ok",
-          "판정 불가 → 보상 없음('I said it' 삭제)"
+          "보상 없이 넘어감"
         ],
         "phonics-match": [
-          "no",
-          "말하기 건너뛰고 코인 없음"
+          "ok",
+          "보상 없이 넘어감"
         ],
         "croco": [
           "ok",
-          "판정 불가 → 카드 없음(규칙)"
+          "보상 없이 넘어감"
         ],
         "word-mashup": [
           "ok",
-          "터치로 계속"
+          "보상 없이 넘어감"
         ],
         "toy-catch": [
           "na",
@@ -398,7 +398,7 @@
         ],
         "puzzle": [
           "ok",
-          "판정 불가 → 단어 별 없음(규칙)"
+          "보상 없이 넘어감"
         ]
       }
     },
@@ -443,63 +443,63 @@
     },
     {
       "id": "lang",
-      "name": "언어 토글 범위·기본값",
+      "name": "언어 토글",
       "desc": "공통: 타이틀에만, 국기 토글. 범위와 기본값이 게임마다 다름",
       "cells": {
         "eye-catch": [
           "part",
-          "기본 한국어, 음성 + 결과 문구"
+          "음성·결과 문구"
         ],
         "magic-block": [
           "ok",
-          "기본 영어, 음성·말풍선·화면 글자 전체"
+          "전체"
         ],
         "phonics-match": [
           "part",
-          "기본 한국어, 음성만"
+          "음성만"
         ],
         "croco": [
           "ok",
-          "대사 + 화면 문구"
+          "대사·화면"
         ],
         "word-mashup": [
           "no",
-          "토글 없음, 영/한 섞임"
+          "토글 없음"
         ],
         "toy-catch": [
           "part",
-          "음성만, 결과 화면에도 보임"
+          "음성만"
         ],
         "ring-ding-dong": [
           "part",
-          "기본 영어, 음성 + 말풍선"
+          "음성·말풍선"
         ],
         "puzzle": [
           "part",
-          "기본 한국어, 음성만"
+          "음성만"
         ]
       }
     },
     {
       "id": "topbar",
-      "name": "상단 바 표준(7.6u)",
-      "desc": "2026-11-20 UI 표준: 버튼 7.6u, 가장자리 3u",
+      "name": "상단 바",
+      "desc": "버튼 7.6u, 가장자리 3u (Toy Catch 기준)",
       "cells": {
         "eye-catch": [
           "ok",
-          "라일락 버튼"
+          "표준"
         ],
         "magic-block": [
           "ok",
-          "볼륨 슬라이더 포함"
+          "표준"
         ],
         "phonics-match": [
           "ok",
-          "음소거만"
+          "표준"
         ],
         "croco": [
-          "no",
-          "6.2u (1024×768에서 약 39px)"
+          "ok",
+          "표준"
         ],
         "word-mashup": [
           "no",
@@ -507,69 +507,69 @@
         ],
         "toy-catch": [
           "ok",
-          "기준 게임"
+          "표준"
         ],
         "ring-ding-dong": [
           "part",
-          "세로 볼륨 슬라이더·360°"
+          "볼륨 추가"
         ],
         "puzzle": [
           "ok",
-          "분홍 젤리"
+          "표준"
         ]
       }
     },
     {
       "id": "teacher",
-      "name": "교사 기능(기록·설정)",
+      "name": "교사 기능",
       "desc": "아이별·단어별 결과, 레벨 지정",
       "cells": {
         "eye-catch": [
           "no",
-          "키 입력만"
+          "없음"
         ],
         "magic-block": [
           "no",
-          "키 입력만"
+          "없음"
         ],
         "phonics-match": [
           "no",
-          "한 기기 = 저장 하나"
+          "없음"
         ],
         "croco": [
           "no",
-          "?level=N"
+          "없음"
         ],
         "word-mashup": [
           "no",
-          "키 입력만"
+          "없음"
         ],
         "toy-catch": [
           "no",
-          "URL 옵션"
+          "없음"
         ],
         "ring-ding-dong": [
           "no",
-          "?age·?tutor"
+          "없음"
         ],
         "puzzle": [
           "no",
-          "키 입력만"
+          "없음"
         ]
       }
     },
     {
       "id": "docs",
-      "name": "문서(README·TRD) 최신",
+      "name": "문서 최신",
       "desc": "코드와 문서가 맞는지",
       "cells": {
         "eye-catch": [
           "ok",
-          "README 최신"
+          "최신"
         ],
         "magic-block": [
           "part",
-          "토글·나가기 설명이 옛날 것"
+          "일부 옛날 것"
         ],
         "phonics-match": [
           "part",
@@ -577,23 +577,23 @@
         ],
         "croco": [
           "ok",
-          "README 상세"
+          "최신"
         ],
         "word-mashup": [
           "part",
-          "README.md 없음, README-3D.md만"
+          "README 없음"
         ],
         "toy-catch": [
           "part",
-          "점수·시간 제한 설명이 옛날 것"
+          "일부 옛날 것"
         ],
         "ring-ding-dong": [
           "part",
-          "튜터 목소리·단계 버튼 설명 어긋남"
+          "일부 어긋남"
         ],
         "puzzle": [
           "ok",
-          "README 최신"
+          "최신"
         ]
       }
     }
@@ -759,7 +759,11 @@
         "word-mashup",
         "toy-catch"
       ],
-      "why": "Croco 버튼 6.2u(약 39px), Word Mashup 자체 상단 바, Toy Catch는 결과 화면에도 언어 토글이 보인다."
+      "why": "Croco 버튼 6.2u(약 39px), Word Mashup 자체 상단 바, Toy Catch는 결과 화면에도 언어 토글이 보인다.",
+      "status": {
+        "croco": "live"
+      },
+      "note": "Croco는 표준과 같다(1024×768에서 Toy Catch와 같은 크기·자리)."
     },
     {
       "id": "F11",

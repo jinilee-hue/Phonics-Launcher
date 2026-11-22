@@ -5,7 +5,7 @@ title_ko: 아이캐치
 tagline: 두 카드에 함께 있는 그림을 먼저 찾아 버튼을 누르고 말하는 게임
 players: 2인
 skill: 첫소리 m 단어(FP.K.U1L1) 그림 보고 단어 말하기
-scope: FPR K U1L1 Mm · 레슨팩 FP.K.U1L1 단어 12개
+scope: FPR K U1L1 Mm · 레슨팩 FP.K.U1L1 m단어 18개
 stack: Vanilla JS + three.js r186 (빌드 없음)
 repo: https://github.com/jinilee-hue/Eye-Catch
 url: https://jinilee-hue.github.io/Eye-Catch/
@@ -17,7 +17,7 @@ updated: 2026-11-22
 ## 1. 개요
 - 목적: 두 카드에 딱 하나 같은 그림이 있다. 먼저 찾은 아이가 자기 버튼을 누르고 단어를 말하면 튜터(눈 하나 외계인)가 발음을 확인하고, 맞으면 카드를 가져간다.
 - 대상 연령: 5–7세(FPR K 교재 Unit 1 Lesson 1 "Mm").
-- 학습 목표: m으로 시작하는 단어 12개를 그림으로 알아보고 단어 전체를 소리 내 말하기. 정답을 공개할 때 "/m/ /m/ + 단어" 챈트로 첫소리를 함께 들려준다(`js/audio.js:87`).
+- 학습 목표: m으로 시작하는 단어 18개를 그림으로 알아보고 단어 전체를 소리 내 말하기. 정답을 공개할 때 "/m/ /m/ + 단어" 챈트로 첫소리를 함께 들려준다(`js/audio.js:87`).
 - 플레이 인원: 2인, 한 기기에서 대결(화면 아래 양쪽 모서리 버튼). 1인 모드와 컴퓨터 상대는 없다.
 - 한 판 시간: 10라운드 + 첫 판 규칙 설명(약 30초) 기준 4–7분(추정).
 
@@ -35,17 +35,17 @@ updated: 2026-11-22
 6. 10라운드가 끝나면 결과 화면을 띄운다. 다시 하기는 2단계(규칙 설명은 생략), 처음으로는 타이틀로 간다.
 
 ## 3. 콘텐츠·데이터
-- 단어 12개: man map meat milk mirror mitt monkey moon mop mouse mug mushroom.
+- 단어 18개 = 레슨팩 FP.K.U1L1의 m단어 전부(대명사 my 제외): mail man map mask mat match meat mice milk mirror mitt monkey moon mop mouse mouth mug mushroom.
 - 출처: 레슨팩 `FP.K.U1L1`(공통자료)을 `phonics-kit/tools/lessonpack.py`로 읽는다. 그림은 파닉스 공통 대표 이미지이고, 단어 음성과 /m/ 음가는 팩 녹음이다.
 - 데이터 파일: `js/words.js`(단어·한글 뜻·서버 판정용 기대 음소열 `ph`·그림 경로), `js/cards-art.js`(그림 data URL), `assets/cards/*.webp`. 셋 다 생성물이라 손으로 고치지 않는다.
-- 덱(`js/cards.js`): 카드 한 장에 그림 6개를 둔다. 이웃한 두 카드가 정확히 1개를 공유하는 사슬 구조이고, 정답이 12단어에 고르게 돌아가도록 한다.
+- 덱(`js/cards.js`): 카드 한 장에 그림 6개를 둔다. 이웃한 두 카드가 정확히 1개를 공유하는 사슬 구조이고, 정답이 단어들에 고르게 돌아가도록 한다.
 - 다른 레슨을 넣는 방법(현재 반자동)
   1. `tools/build_cards.py:16-17`, `tools/build_voice.py:22`의 레슨 코드와 단어 목록을 바꾼다.
   2. `build_cards.py`의 `'title': 'Mm'`, `'lesson': 1` 하드코딩을 바꾼다.
   3. 챈트 키 `'s:m'`(`js/audio.js:87`)을 바꾼다.
   4. 음성인식의 비슷한 단어 표 `SAME`(`js/stt.js:49`)을 바꾼다.
   5. "모든 그림이 m으로 시작한다"는 전제로 세운 판정 규칙(`js/stt.js:63-65`)을 다시 맞춘다.
-  6. 덱을 만들려면 단어가 11–12개 이상 필요하다(추정, 카드당 6개 + 5개 교체).
+  6. 덱을 만들려면 단어가 11개 이상 필요하다(카드당 6개 + 5개 교체). 한 판에 18개 중 11개가 보인다.
 
 ## 4. 레벨·난이도
 | 항목 | 내용 |
@@ -68,7 +68,7 @@ updated: 2026-11-22
 ## 6. 튜터·음성·발음 판정
 - 튜터: 눈 하나 외계인. `js/monster.js`의 SDF 클레이 3D 모델로 눈, 눈꺼풀, 입 모양 3단, 팔, 다리를 움직인다.
 - 튜터 음성: 회사 phonics-api TTS, 목소리 `en-US-AvaMultilingualNeural`(파닉스 공통 튜터 목소리, `js/voice.js:3-4`). 영어 23줄과 한국어 23줄이다.
-- 단어 음성: 레슨팩 녹음(mirror·mitt·mushroom은 WAV, 나머지는 공식 MP3).
+- 단어 음성: 레슨팩 녹음(match·mirror·mitt·mushroom은 WAV, 나머지는 공식 MP3).
 - 발음 판정(`game.js:274-299`)
   - 회사 phonics-api `POST /v1/speech/analyze`로 16kHz WAV를 보낸다. 서버는 녹음을 저장하지 않는다. 서버가 들은 음소열을 탁자 위 모든 그림의 기대 음소열과 비교한다(`PhonicsAPI.judge`). 서버 자체의 `success` 값은 쓰지 않는다.
   - 기기 안 whisper tiny.en(`js/stt.js`, `js/stt-worker.js`, `stt/` 55MB)을 동시에 돌린다. 서버가 다른 그림으로 들었거나 확신이 없을 때 이 결과로 합의한다.
@@ -131,10 +131,10 @@ updated: 2026-11-22
 | 스크립트 | 검사 내용 | 통과 기준 |
 |---|---|---|
 | `tools/qa/flow.py <out> [W H]` | `?fake=1`로 10라운드 전체, 기회 넘김, 아무도 못 맞힌 라운드, 결과/다시 하기/홈 | 스크린샷 정상, 콘솔 오류·HTTP 400 이상 없음 |
-| `tools/qa/stt_check.py` | `dev/stt.html` 12단어 녹음 × 12정답 판정표 + 단어가 아닌 소리 | 대각선만 OK |
+| `tools/qa/stt_check.py` | `dev/stt.html` 단어 녹음 × 정답 판정표 + 단어가 아닌 소리 | 대각선만 OK |
 | `tools/qa/say_flow.py <wav> <정답> [ok\|miss] [api\|device]` | 마이크 경로 전체(getUserMedia만 WAV 스트림으로 대체) | 기대 결과와 일치 |
 | `tools/qa/api_vs_device.py` | 서버 / 기기 / 둘 다 판정 비교(`dev/eval`, 공식 녹음 + 아이 같은 목소리 + 소음) | 맞는 단어는 통과, 다른 단어는 불통과(README 실측 통과 90.6%, 오통과 5.7%) |
-| `node ../phonics-kit/tools/qa_judge.mjs` | phonics-api 판정 규칙(12단어 × 팩 녹음 + TTS 4목소리) | 대각선만 OK |
+| `node ../phonics-kit/tools/qa_judge.mjs` | phonics-api 판정 규칙(단어 × 팩 녹음 + TTS 4목소리) | 대각선만 OK |
 | `tools/qa/monster_cmp.py` · `tools/qa/shot.py` | 3D 튜터와 목업 비교, 화면 스냅샷 | 눈으로 확인 |
 
 - 모든 스크립트는 `uv run --with playwright==1.62.0`으로 실행한다. 키는 로컬 설정 파일에서 읽어 브라우저에 넣기만 하고 출력하지 않는다.
@@ -143,7 +143,9 @@ updated: 2026-11-22
 - [반영] 말하기 JUMP 버튼(2026-11-22): 노란 공(튜터 뿔 색), 말하는 쪽 튜터 옆. 틀림 2번 → "Good try!", 침묵 약 22초, 판정 불가면 카드 없음. 첫 조용한 차례에 장갑·음성 안내.
 - [높음] 2인 전용이다. 혼자 하는 아이, 가정 학습, 교실 전체 모드가 없다(컴퓨터 상대 없음).
 - [반영] 진도·기록: 판 결과를 공통 기록에 저장(2026-11-22). 교사가 볼 단어별 정답률 화면은 아직 없다(F13).
-- [중간] 레벨이 없다. 10라운드와 12단어가 고정이고 적응형 난이도도 없다.
+- [중간] 레벨이 없다. 10라운드와 18단어가 고정이고 적응형 난이도도 없다.
+- [반영] 단어 = 레슨팩 m단어 18개(2026-11-22).
+- [중간] 소리가 비슷한 단어끼리 서로 통과할 수 있다: mouth→mouse, mat·map·man·mask·match. 판정 QA(`qa_judge.mjs`) 자기 단어 통과 78/91(86%).
 - [중간] 레슨이 하드코딩돼 있다. 다른 레슨으로 바꾸려면 빌드 스크립트 2곳, 제목, 챈트, `SAME` 표, m 전제 판정 규칙을 함께 고쳐야 한다(3장).
 - [반영] 그림 누르기 모드를 없앴다 — 말해야만 카드(2026-11-22). 판정도 강화: 기기 인식기는 단어 글자가 들려야 통과, 공통 판정은 모음·첫소리가 들려야 통과(허밍·"음~"·apple 통과 0).
 - [중간] phonics-api 키를 교사가 기기마다 입력해야 한다. 키가 없으면 55MB 모델을 받고, 판정이 최대 20초까지 기다릴 수 있다(`js/stt.js:53`).
