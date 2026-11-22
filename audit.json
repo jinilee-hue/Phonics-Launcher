@@ -68,12 +68,12 @@
           "Jump 버튼(말 안 하면 표시)"
         ],
         "croco": [
-          "no",
-          "없음, '크게 말해 봐' 무한 반복"
+          "ok",
+          "JUMP(카드 윗모서리), 카드 없이 넘어감"
         ],
         "word-mashup": [
-          "part",
-          "버튼 없음, 자동으로 넘어감"
+          "ok",
+          "JUMP(결과 카드 모서리), 보상 없이 넘어감"
         ],
         "toy-catch": [
           "na",
@@ -182,23 +182,23 @@
         ],
         "phonics-match": [
           "ok",
-          "레벨·코인·옷 저장"
+          "레벨·코인·옷 저장 + 공통 기록"
         ],
         "croco": [
-          "no",
-          "새로고침하면 레벨 1"
+          "ok",
+          "공통 기록 + 레벨 고르기·이어 하기"
         ],
         "word-mashup": [
-          "part",
-          "합성어 도감만"
+          "ok",
+          "공통 기록 저장(레벨 없음 — 기록만)"
         ],
         "toy-catch": [
           "ok",
           "공통 기록 저장(레벨 없음 — 기록만)"
         ],
         "ring-ding-dong": [
-          "no",
-          "저장 없음"
+          "ok",
+          "공통 기록 저장(화면 변화 없음)"
         ],
         "puzzle": [
           "part",
@@ -263,12 +263,12 @@
           "api + whisper (엄격)"
         ],
         "croco": [
-          "part",
-          "키 없으면 아무 소리나 통과"
+          "ok",
+          "api 판정, 판정 불가면 카드 없음"
         ],
         "word-mashup": [
-          "part",
-          "api 받아쓰기 + 구글 인식, 글자 비교"
+          "ok",
+          "api analyze + judge, 말해야 보상"
         ],
         "toy-catch": [
           "no",
@@ -302,8 +302,8 @@
           "약 20초 뒤 넘어감"
         ],
         "croco": [
-          "no",
-          "'크게 말해 봐' 끝없이 반복"
+          "ok",
+          "약 20초 뒤 넘어감"
         ],
         "word-mashup": [
           "ok",
@@ -341,8 +341,8 @@
           "말하기 건너뛰고 코인 없음"
         ],
         "croco": [
-          "part",
-          "마이크 버튼을 눌러야 넘어감"
+          "ok",
+          "판정 불가 → 카드 없음(규칙)"
         ],
         "word-mashup": [
           "ok",
@@ -576,8 +576,8 @@
         "toy-catch": "live",
         "magic-block": "live",
         "eye-catch": "live",
-        "croco": "local",
-        "word-mashup": "local",
+        "croco": "live",
+        "word-mashup": "live",
         "puzzle": "todo"
       },
       "note": "2026-11-22: 공통 규칙은 phonics-kit README. JUMP 색은 게임별(Eye-Catch 노랑). 설명 SKIP은 흰 반투명 알약."
@@ -600,9 +600,9 @@
         "eye-catch": "live",
         "magic-block": "live",
         "toy-catch": "live",
-        "croco": "local",
-        "word-mashup": "local",
-        "ring-ding-dong": "local",
+        "croco": "live",
+        "word-mashup": "live",
+        "ring-ding-dong": "live",
         "puzzle": "todo"
       },
       "note": "2026-11-22: 공통 키 phonics.progress(phonics-kit/phonics-progress.js). 레벨 없는 게임은 기록만(사용자 결정), Croco는 레벨 고르기·이어 하기."
@@ -620,9 +620,9 @@
       "why": "키 없음·인식기 실패 때 Magic Block은 아무 소리나 통과, Croco는 아무 소리나 통과, Match는 보상 없음, Word Mashup은 글자 비교로 아주 느슨하다. phonics-kit에 공통 규칙(재시도 횟수, 실패 시 처리, 보상 여부)을 정하고 같은 판정(analyze + judge)을 쓴다.",
       "status": {
         "magic-block": "live",
-        "croco": "local",
+        "croco": "live",
         "phonics-match": "live",
-        "word-mashup": "local"
+        "word-mashup": "live"
       },
       "note": "2026-11-22: 판정 불가 → 넘어가고 보상 없음(사용자 결정). Eye-Catch는 그림 누르기 모드 삭제·판정 강화까지 배포."
     },
