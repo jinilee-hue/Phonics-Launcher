@@ -1,0 +1,95 @@
+---
+id: phonics-run
+title: Phonics Run
+title_ko: 파닉스 런
+tagline: 타타와 하늘섬을 달리며 m 그림만 먹고, 문 앞에서 단어를 말해요
+players: 1인
+skill: m 첫소리 판별(그림 듣고 먹기·뛰어넘기) + "/m/ /m/ 단어" 듣기 + 단어 말하기
+scope: FPR K U1L1 Mm · 레슨팩 m 단어 18개 + 다른 소리 그림 9개(함정)
+stack: Vanilla JS ES 모듈(빌드 없음) + three.js r180
+repo: https://github.com/jinilee-hue/Phonics-Run
+url: https://jinilee-hue.github.io/Phonics-Run/
+updated: 2026-11-23
+---
+
+# Phonics Run TRD
+
+## 1. 개요
+- 목적: 교재 FPR K Unit 1 Lesson 1(Mm)의 m 단어를 슈퍼마리오식 횡스크롤 달리기로 익힌다. 그림을 보고(다가가면 단어를 읽어 줌) m 소리로 시작하는 것만 먹고, 아닌 것은 뛰어넘는다.
+- 대상: 5~7세. 혼자 태블릿·PC로 한다.
+- 학습 목표: 첫소리 /m/ 판별, 그림·단어 연결, "/m/ /m/ 단어" 듣기, 단어 말하기(발음 판정).
+- 플레이 인원: 1인.
+- 한 판 시간: 레벨 1 약 1~2분, 레벨 3 약 2~4분(추정 — 게이트 말하기 포함).
+
+## 2. 게임 흐름
+1. 타이틀: 네온 스테이지 위 Tata가 손을 흔든다. 로고, 레벨 진행 줄(1·2·3, 별), START. 왼쪽 위 phonics-api 키·SHOP·지갑 코인, 오른쪽 위 언어 토글·소리.
+2. START: 처음 한 번 마이크 권한을 묻는다(그동안 대기, 1.5초 넘으면 "마이크를 허용해 줘").
+3. 첫 판 시범(방문당 1회, 레벨 1): Tata 인사 → "/m/ /m/ 이 소리로 시작하는 그림을 모아 봐" → 장갑 손이 → 버튼을 누르고 Tata가 달려 moon을 먹음 → 점프 버튼을 눌러 틈을 건넘 → "다른 그림은 뛰어넘어" → "이제 네가 해 봐" → 코스 새로 시작. 시범은 보상·감점·기록 없음. SKIP으로 끝낸다.
+4. 달리기: ←→·점프(누르는 길이로 높이). 그림 카드에 다가가면 단어를 읽어 준다. m 그림 = 먹음(가방 칸이 참, 단어 음성), 다른 그림 = 하트 −1, 코인 −2, 튕겨 나감. 구름 아래로 떨어지면 하트 −1, 마지막 안전한 곳에서 다시.
+5. 레벨의 m 그림을 다 모으면 게이트가 깨어난다("다 모았어! 문으로 달려가자"). 덜 모으고 가면 잠김 안내(← + 빈 칸 수).
+6. 게이트 말하기: 모은 단어마다 그림·단어 카드 → "/m/ /m/ 단어" → 아이가 말함 → 맞으면 코인 +3, 게이트가 밝아짐. JUMP = 그 단어 건너뜀(코인 없음). 두 번 틀리면 "잘했어! 다음으로 가자".
+7. 게이트가 열리고 Tata가 뛰어들면 결과: LEVEL CLEAR!, 별(3 − 잃은 하트, 최소 1), 모은 그림(말한 것은 초록 테), 코인. 홈 · 다시 · 다음 레벨.
+8. 하트 0 → OOPS!(다시 · 홈).
+
+## 3. 콘텐츠·데이터
+- 레슨팩 FP.K.U1L1(`Phonics/공통자료/FP.K.U1L1-lesson-pack`): m 단어 18개(moon map milk mop man meat mat mitt mouse mug mail mask monkey mushroom mirror match mice mouth), 함정 9개(egg lid ten heart fox gift kite gate doll).
+- 그림 `assets/words/<w>.png`(레슨팩 그림 512px), 단어 음성·/m/ 소리 `assets/voice/w_*.mp3`, `s_m.mp3`(레슨팩 공식 녹음).
+- 코스·배치: `js/level.js` `LEVELS`(섬·발판·열기구 리프트·카드·코인 좌표), 발음 기대값 `PHON`(레슨팩 + 서버 G2P).
+- 다른 레슨 추가: 레슨팩 단어로 `LEVELS`의 카드 단어를 바꾸고 `tools/build_voice.py`의 단어 목록을 다시 굽는다.
+
+## 4. 레벨·난이도
+- 3레벨, 고르지 않는다 — START는 아직 못 깬 첫 레벨, 다 깼으면 별이 가장 적은 레벨.
+- 레벨 1: m 5개·함정 1개, 틈·발판 계단. 레벨 2: m 6개·함정 3개, 위아래·좌우 열기구 리프트. 레벨 3: m 7개·함정 5개, 리프트 2개·높은 발판.
+- 타이머 없음. 적응형 아님.
+
+## 5. 보상·피드백
+- m 코인(코스), 게이트에서 말한 단어마다 +3 코인. 비용: 함정 그림 −2 코인·−1 하트, 낙하 −1 하트.
+- 코인은 판이 끝나면 지갑에 쌓이고 SHOP에서 Tata 꾸미기를 산다: 선글라스 15 · 망토 30 · 왕관 45 · 황금 신발 60(산 것은 켜고 끄기).
+- 별 0~3(레벨별 최고 기록), 결과 화면 연출(별 회전 등장, 축하음, Tata 환호).
+
+## 6. 튜터·음성·발음 판정
+- 튜터: Phonics Land 대표 캐릭터 Tata(Classmate Friends)를 캐릭터 시트 치수대로 코드 3D 모델링(`js/tata.js`) — 팔다리 달리기 동작, 점프·착지 찌그러짐, 머리 술 흔들림.
+- 튜터 음성: phonics-api TTS, 파닉스 게임 공통 목소리(Ava Multilingual → aiden 톤), 영어·한국어 30줄씩, 받아쓰기로 다시 들어 확인(`tools/build_voice.py`).
+- 발음 판정: phonics-api analyze + 공통 judge(서버 판정이 최종), 서버를 못 쓰면 기기 안 whisper tiny.en(`stt/`, 음성이 기기 밖으로 안 나감). 판정할 수 없으면 말하기를 건너뛰고 코인 없음. API 키 값은 코드에 없다(기기에서 한 번 입력).
+
+## 7. 화면·UI 요구사항
+- 16:9 기준, 단위 u = min(1vh, 100vw/177.78). 상단 바 버튼 7.6u, 가장자리 3u(Toy Catch 기준). 언어 토글은 타이틀에만, 처음 한국어, 튜터 음성만 바뀜(화면 글자 영어).
+- 터치: 왼쪽 아래 ← →(15u), 오른쪽 아래 점프(19u). 말하기 중에는 숨김. 키보드 ←→/AD, Space/↑/W/Z.
+- 예외: 마이크 거부·없음 → 말하기 없이 게이트가 열림(코인 없음). 오프라인 → 기기 안 인식.
+
+## 8. 기술 구성
+| 파일 | 역할 |
+|---|---|
+| `index.html`, `css/style.css` | 화면·HUD·버튼 |
+| `js/game.js` | 흐름·물리(고정 스텝, 코요테 타임, 점프 버퍼)·카메라·시범·게이트 말하기·상점 |
+| `js/env.js` | Word Mashup 3D 월드 빌더(하늘·구름·섬·발판·나무·울타리·열기구·스테이지·게이트) |
+| `js/level.js` | 코스 데이터와 생성, 리프트 |
+| `js/items.js` | 그림 카드·m 코인 |
+| `js/tata.js` | Tata 모델·애니메이션·꾸미기 |
+| `js/audio.js` | 음성·효과음·배경음악(더킹) |
+| `js/phonics-api.js`, `js/mic.js`, `js/stt.js`, `js/stt-worker.js`, `stt/` | 발음 판정(공통 kit 사본) |
+- 실행: `python3 -m http.server 5185` → http://127.0.0.1:5185/ (ES 모듈이라 file:// 불가). 배포: GitHub Pages(빌드 없음).
+
+## 9. 에셋·생성 파이프라인
+| 스크립트 | 만드는 것 | 실행 |
+|---|---|---|
+| `tools/build_voice.py` | 단어·/m/·튜터 대사 → `assets/voice`, `js/voice.js` | `uv run --with numpy python tools/build_voice.py` |
+| `tools/make_bgm.py` | 배경음악(블루그래스 호다운, G 160BPM, 24초) → `assets/audio/bgm.mp3` | `uv run --with numpy --with scipy --with pyloudnorm python tools/make_bgm.py` |
+| `tools/tata_cmp.py` 외 | Tata 시트 대비 렌더 비교 | `uv run --with playwright --with pillow python tools/tata_cmp.py` |
+
+## 10. 저장 데이터
+| 키 | 내용 |
+|---|---|
+| `phonics-run.save` | 레벨별 별, 지갑 코인, 산 것·입은 것 |
+| `phonics-run.lang` · `phonics-run.muted` | 튜터 언어 · 소리 끔 |
+| `phonics.progress` (`phonics-run`) | 공통 진도: 레벨, 별, 모은 단어, 말한 단어, 코인, 실수, 낙하, 시간 |
+| `phonics_api_key` | 발음 서버 키(공통) |
+
+## 11. QA
+- `tools/shots.py --scene basic|flow|hurt|locked|demo|say|shop` — 헤드리스로 달리기·클리어·함정·낙하·잠김·시범·말하기(`?fake=ok,wrong,…`)·상점을 돌려 화면과 상태를 확인.
+- 통과 기준: 콘솔 오류 0, 시범이 하트를 잃지 않고 끝남, 말하기 판정별 코인·점 표시, 클리어 후 지갑 반영.
+
+## 12. 알려진 이슈·보완 필요
+- 중간: 직접 손으로 해 본 난이도(점프 거리·함정 간격) 검증이 아직 없다 — 아이 테스트 필요.
+- 중간: 한국어 대사 3줄(k:oops, k:tryit, k:allclear)은 받아쓰기 확인을 통과하지 못해 첫 녹음을 썼다 — 귀로 확인 필요.
+- 낮음: 레슨 1(Mm)만 있음 — 다른 레슨팩이 나오면 코스 단어 확장.

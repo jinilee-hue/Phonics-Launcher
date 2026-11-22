@@ -6,7 +6,7 @@ import json, pathlib, re
 import markdown
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-ORDER = ['eye-catch', 'magic-block', 'phonics-match', 'croco', 'word-mashup', 'toy-catch', 'ring-ding-dong', 'puzzle']
+ORDER = ['eye-catch', 'magic-block', 'phonics-match', 'croco', 'word-mashup', 'toy-catch', 'ring-ding-dong', 'puzzle', 'phonics-run']
 FALLBACK = {   # used until a game's TRD exists
     'eye-catch': ('Eye Catch', '아이캐치', 'https://jinilee-hue.github.io/Eye-Catch/'),
     'magic-block': ('Magic Block', '매직 블록', 'https://jinilee-hue.github.io/Magic-Block/'),
@@ -16,6 +16,7 @@ FALLBACK = {   # used until a game's TRD exists
     'toy-catch': ('Toy Catch', '토이캐치', 'https://jinilee-hue.github.io/Toy-Catch/'),
     'ring-ding-dong': ('Ring Ding Dong', '링딩동', 'https://jinilee-hue.github.io/Phonics-Halli-Galli-3D/'),
     'puzzle': ('Phonics Puzzle', '파닉스 퍼즐', 'https://jinilee-hue.github.io/Phonics-Puzzle/'),
+    'phonics-run': ('Phonics Run', '파닉스 런', 'https://jinilee-hue.github.io/Phonics-Run/'),
 }
 
 

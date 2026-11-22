@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-22",
+  "updated": "2026-11-23",
   "games": [
     "eye-catch",
     "magic-block",
@@ -8,7 +8,8 @@
     "word-mashup",
     "toy-catch",
     "ring-ding-dong",
-    "puzzle"
+    "puzzle",
+    "phonics-run"
   ],
   "criteria": [
     {
@@ -45,6 +46,10 @@
           "SKIP"
         ],
         "puzzle": [
+          "ok",
+          "SKIP"
+        ],
+        "phonics-run": [
           "ok",
           "SKIP"
         ]
@@ -86,6 +91,10 @@
         "puzzle": [
           "ok",
           "JUMP"
+        ],
+        "phonics-run": [
+          "ok",
+          "JUMP"
         ]
       }
     },
@@ -125,6 +134,10 @@
         "puzzle": [
           "ok",
           "레슨팩 18단어"
+        ],
+        "phonics-run": [
+          "ok",
+          "레슨팩 27단어"
         ]
       }
     },
@@ -163,6 +176,10 @@
           "문법 · 복수 -s"
         ],
         "puzzle": [
+          "info",
+          "U1L1 Mm"
+        ],
+        "phonics-run": [
           "info",
           "U1L1 Mm"
         ]
@@ -204,6 +221,10 @@
         "puzzle": [
           "ok",
           "조각 6단계 자동"
+        ],
+        "phonics-run": [
+          "ok",
+          "3레벨 자동"
         ]
       }
     },
@@ -241,6 +262,10 @@
           "표준"
         ],
         "puzzle": [
+          "ok",
+          "표준"
+        ],
+        "phonics-run": [
           "ok",
           "표준"
         ]
@@ -282,6 +307,10 @@
         "puzzle": [
           "ok",
           "별 + 스티커북"
+        ],
+        "phonics-run": [
+          "ok",
+          "코인 → 꾸미기"
         ]
       }
     },
@@ -319,6 +348,10 @@
           "말하기 없음"
         ],
         "puzzle": [
+          "ok",
+          "표준"
+        ],
+        "phonics-run": [
           "ok",
           "표준"
         ]
@@ -360,6 +393,10 @@
         "puzzle": [
           "ok",
           "표준"
+        ],
+        "phonics-run": [
+          "ok",
+          "표준"
         ]
       }
     },
@@ -397,6 +434,10 @@
           "말하기 없음"
         ],
         "puzzle": [
+          "ok",
+          "보상 없이 넘어감"
+        ],
+        "phonics-run": [
           "ok",
           "보상 없이 넘어감"
         ]
@@ -438,6 +479,10 @@
         "puzzle": [
           "ok",
           "1인"
+        ],
+        "phonics-run": [
+          "ok",
+          "1인"
         ]
       }
     },
@@ -475,6 +520,10 @@
           "표준"
         ],
         "puzzle": [
+          "ok",
+          "표준"
+        ],
+        "phonics-run": [
           "ok",
           "표준"
         ]
@@ -516,6 +565,10 @@
         "puzzle": [
           "ok",
           "표준"
+        ],
+        "phonics-run": [
+          "ok",
+          "표준"
         ]
       }
     },
@@ -553,6 +606,10 @@
           "최신"
         ],
         "puzzle": [
+          "ok",
+          "최신"
+        ],
+        "phonics-run": [
           "ok",
           "최신"
         ]
@@ -613,7 +670,8 @@
         "word-mashup",
         "toy-catch",
         "ring-ding-dong",
-        "puzzle"
+        "puzzle",
+        "phonics-run"
       ],
       "why": "단어별 정답률·아이별 진도를 볼 곳이 없다. F1 공통 저장이 생기면 런처에 교사 보기를 붙일 수 있다."
     },
