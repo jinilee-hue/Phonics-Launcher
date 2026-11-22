@@ -111,6 +111,10 @@
   try { picked = new Set(JSON.parse(localStorage.getItem('launcher.picked') || '[]')); } catch (e) { /* storage off */ }
   const savePicked = () => { try { localStorage.setItem('launcher.picked', JSON.stringify([...picked])); } catch (e) { /* storage off */ } };
   const PCLS = { 높음: 'p-hi', 중간: 'p-mid', 낮음: 'p-lo' };
+  // per-game status of a fix (audit.json fixes[].status, 2026-11-22): live = 배포됨 · local = 반영·배포 대기 · todo = 아직 · kept = 유지(사용자 결정)
+  const ST_LBL = { live: '배포', local: '대기', todo: '아직', kept: '유지' };
+  const progress = f => { if (!f.status) return ''; const g = f.games.length, done = f.games.filter(id => ['live', 'kept'].includes(f.status[id])).length;
+    return `<span class="fix-prog ${done === g ? 'all' : ''}">반영 ${done}/${g}</span>`; };
   function fixes(pri) {
     const groups = ['높음', '중간', '낮음'].filter(p => pri === 'all' || p === pri);
     $('#fixList').innerHTML = groups.map(p => {
@@ -118,8 +122,9 @@
       return `<div class="pri-group"><h3><b class="pri ${PCLS[p]}">${p}</b>${items.length}개</h3>${items.map(f => `
         <div class="fix ${picked.has(f.id) ? 'on' : ''}" data-id="${f.id}" role="checkbox" aria-checked="${picked.has(f.id)}" tabindex="0">
           <span class="box">${ICON.check}</span>
-          <div><h4><span class="fid">${f.id}</span>${esc(f.title)}</h4><p>${esc(f.why)}</p>
-          <div class="tags">${f.games.map(id => `<span class="tag"><img src="${esc(byId[id].img)}" alt="">${esc(byId[id].title)}</span>`).join('')}</div></div>
+          <div><h4><span class="fid">${f.id}</span>${esc(f.title)}${progress(f)}</h4><p>${esc(f.why)}</p>
+          <div class="tags">${f.games.map(id => { const st = (f.status || {})[id] || ''; return `<span class="tag ${st ? 'st-' + st : ''}" title="${esc(ST_LBL[st] ? (A.statusLegend || {})[st] || '' : '')}"><img src="${esc(byId[id].img)}" alt="">${esc(byId[id].title)}${st ? `<i>${ST_LBL[st]}</i>` : ''}</span>`; }).join('')}</div>
+          ${f.note ? `<p class="fix-note">${esc(f.note)}</p>` : ''}</div>
         </div>`).join('')}</div>`;
     }).join('');
     updateCopy();

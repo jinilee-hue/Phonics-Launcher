@@ -115,7 +115,7 @@ updated: 2026-11-22
 | `claw-lang` | localStorage | 안내 음성 언어 `en`/`ko` |
 | `claw-muted` | localStorage | 음소거 `1`/`0` |
 
-- 저장 안 됨: 코인, 별, 잡은 친구, 진도. phonics-api 키도 쓰지 않는다.
+- 판 결과(별·맞힌 친구·라운드·코인·시간)는 공통 기록(`phonics.progress`)에 남긴다(2026-11-22). 코인 누적·진도 이어 하기는 없다. phonics-api 키는 쓰지 않는다.
 
 ## 11. QA
 - headless Playwright + 실제 Chrome(Metal). 훅: `window.__claw`(상태), `window.__clawApi`(startGame/drop/finish), `Stage.frozen` + `Stage.step(dt)`로 프레임 고정. 이 문서를 쓰면서는 실행하지 않았다.
@@ -130,7 +130,7 @@ updated: 2026-11-22
 | 배포 후 | 공개 URL에서 `__ready`, START 동작, 콘솔 오류·400 이상 응답 없음 |
 
 ## 12. 알려진 이슈·보완 필요
-- [높음] 공통 규칙(Skip·Jump): 인트로·설명 Skip 버튼 — 없음(안내 음성·손 시범). 모든 파닉스 게임에 넣는다(2026-11-22 규칙).
+- [반영] 안내 SKIP(2026-11-22): 첫 판 안내 음성·손 시범 동안 오른쪽 아래 흰 반투명 SKIP.
 - [높음] 인형 옷·모자에 첫 글자가 크게 찍혀 있어, 소리를 듣지 않고 글자 모양만 맞춰도 풀린다.
 - [높음] 말하기 단계가 없다. 다른 파닉스 게임과 달리 phonics-api 발음 판정을 쓰지 않는다.
 - [높음] 1라운드에서 코인 8개를 다 쓰면 a·s·t를 보지 못하고 끝난다. 결과를 좌우하는 것이 소리 판단보다 조준(운동 기술)이다.

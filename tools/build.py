@@ -40,8 +40,8 @@ def parse(path):
     html = re.sub(r'<h2>(.*?)</h2>', hid, html)
     html = html.replace('<table>', '<div class="tbl"><table>').replace('</table>', '</table></div>')
     # priority tags in section 12
-    cls = {'높음': 'hi', '중간': 'mid', '낮음': 'lo'}
-    html = re.sub(r'\[(높음|중간|낮음)\]', lambda mm: '<b class="pri p-%s">%s</b>' % (cls[mm.group(1)], mm.group(1)), html)
+    cls = {'높음': 'hi', '중간': 'mid', '낮음': 'lo', '반영': 'done'}   # [반영] = fixed (and live)
+    html = re.sub(r'\[(높음|중간|낮음|반영)\]', lambda mm: '<b class="pri p-%s">%s</b>' % (cls[mm.group(1)], mm.group(1)), html)
     return meta, html, toc
 
 

@@ -5,6 +5,7 @@ title_ko: 파닉스 퍼즐
 tagline: m 단어 그림 퍼즐을 맞추고, 완성되면 단어를 듣고 따라 말해요
 players: 1인
 skill: m 첫소리 단어 18개 — 그림·단어 연결, "/m/ /m/ 단어" 듣기, 단어 말하기
+scope: FPR K U1L1 Mm · 레슨팩 m 단어 18개
 stack: Vanilla JS (빌드 없음) + three.js(파티클 굽기용)
 repo: https://github.com/jinilee-hue/Phonics-Puzzle
 url: https://jinilee-hue.github.io/Phonics-Puzzle/
