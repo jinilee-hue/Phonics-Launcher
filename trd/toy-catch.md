@@ -5,6 +5,7 @@ title_ko: 토이캐치
 tagline: 첫소리를 듣고 그 소리로 시작하는 인형을 집게로 뽑아요
 players: 1인
 skill: 첫소리 m·a·s·t 듣고 그 소리로 시작하는 단어(인형) 고르기 — 말하기 없음
+scope: FPR K Unit 1 첫소리 m·a·s·t(오답 c·d·f) · 게임에 직접 넣은 인형 단어
 stack: Vanilla JS + three.js r186(IIFE 번들, 빌드 없음)
 repo: https://github.com/jinilee-hue/Toy-Catch
 url: https://jinilee-hue.github.io/Toy-Catch/

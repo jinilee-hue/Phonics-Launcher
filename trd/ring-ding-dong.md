@@ -5,6 +5,7 @@ title_ko: 링딩동
 tagline: 카드에 그림이 여러 개면 Coco보다 먼저 종을 치는 게임
 players: 1인
 skill: 단수·복수 -s 구별 (그림 개수 보기 + 단어 끝소리 듣기)
+scope: 문법 NP-01 규칙 복수 -s(Essential Grammar) · 지금은 5세 K만, 6·7세(A·B)는 숨김
 stack: Vanilla JS + three.js r186 (WebGL, 빌드 없음)
 repo: https://github.com/jinilee-hue/Phonics-Halli-Galli-3D
 url: https://jinilee-hue.github.io/Phonics-Halli-Galli-3D/

@@ -5,6 +5,7 @@ title_ko: 아이캐치
 tagline: 두 카드에 함께 있는 그림을 먼저 찾아 버튼을 누르고 말하는 게임
 players: 2인
 skill: 첫소리 m 단어(FP.K.U1L1) 그림 보고 단어 말하기
+scope: FPR K U1L1 Mm · 레슨팩 FP.K.U1L1 단어 12개
 stack: Vanilla JS + three.js r186 (빌드 없음)
 repo: https://github.com/jinilee-hue/Eye-Catch
 url: https://jinilee-hue.github.io/Eye-Catch/

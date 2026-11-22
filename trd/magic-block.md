@@ -5,6 +5,7 @@ title_ko: 매직 블록
 tagline: 친구와 번갈아 m 블럭을 빼고 그 단어를 소리 내어 읽는 3D 젠가
 players: 2인
 skill: 첫글자 m 단어 고르기(함정 jam·lemon 구별) + 튜터를 따라 단어 말하기
+scope: FPR K U1 Mm · 직접 고른 m 단어 46개(함정 jam·lemon 포함), 그림·음성은 레슨팩
 stack: Vite + TypeScript + three.js + cannon-es (기기 안 인식 transformers.js whisper-tiny.en)
 repo: https://github.com/jinilee-hue/Magic-Block
 url: https://jinilee-hue.github.io/Magic-Block/

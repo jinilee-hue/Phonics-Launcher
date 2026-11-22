@@ -5,6 +5,7 @@ title_ko: 크로코 파닉스
 tagline: 악어 이빨을 번갈아 누르고, 튀어나온 그림 단어를 따라 말해요
 players: 2인
 skill: 레벨 음가 + 단어 듣기 → 단어 따라 말하기(phonics-api 판정), FPR K Lesson 1–10
+scope: FPR K Lesson 1–10 · 레벨 1 = 레슨팩 FP.K.U1L1 12단어, 레벨 2–10 = 교재 Lesson 단어
 stack: Vanilla JS + three.js r186(IIFE, 빌드 없음)
 repo: https://github.com/jinilee-hue/Croco-Phonics
 url: https://jinilee-hue.github.io/Croco-Phonics/

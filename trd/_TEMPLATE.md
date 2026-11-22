@@ -5,6 +5,7 @@ title_ko: <한국어 이름>
 tagline: <한 줄 소개, 한국어, 아이에게 무엇을 하는 게임인지 (40자 안팎)>
 players: <1인 | 2인 | 1인·2인>
 skill: <파닉스 학습 목표, 짧게 (예: 첫소리 m 단어 듣고 고르기 + 말하기)>
+scope: <학습 범위: 교재·레슨과 콘텐츠 출처 (예: FPR K U1L1 Mm · 레슨팩 FP.K.U1L1 단어 12개 / 교재 밖 · …)>
 stack: <예: Vanilla JS + three.js | Vite + TypeScript + Phaser>
 repo: https://github.com/jinilee-hue/<repo>
 url: https://jinilee-hue.github.io/<repo>/

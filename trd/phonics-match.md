@@ -5,6 +5,7 @@ title_ko: 파닉스 매치
 tagline: 같은 그림 3개를 맞추고 첫소리와 단어를 따라 말해 코인 모으기
 players: 1인
 skill: 첫소리+단어 듣고 따라 말하기(/m/ /m/ monkey), 글자와 소리 연결
+scope: FPR K 전체(Unit 1–6 첫소리) · 동물·사물·과일 3주제, 교재 단어와 공식 녹음
 stack: Vite + TypeScript (DOM·CSS·Canvas 2D, 기기 안 인식 transformers.js whisper-tiny.en)
 repo: https://github.com/jinilee-hue/Phonics-Match
 url: https://jinilee-hue.github.io/Phonics-Match/

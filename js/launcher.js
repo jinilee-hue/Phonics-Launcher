@@ -44,6 +44,7 @@
             ${g.stack ? `<span class="tag">${esc(g.stack.split(/[+(]/)[0].trim())}</span>` : ''}
           </div>
           ${g.skill ? `<div class="dots" title="학습 목표">${esc(g.skill)}</div>` : ''}
+          ${g.scope ? `<p class="scope" title="학습 범위"><b>범위</b>${esc(g.scope)}</p>` : ''}
           <div class="dots" title="점검표 '있음' 항목 수">${A.criteria.map(c => `<i class="st ${(c.cells[g.id] || ['na'])[0]}" title="${esc(c.name)}: ${esc((c.cells[g.id] || [])[1] || '')}"></i>`).join('')}<span>&nbsp;${okN}/${all}</span></div>
           <div class="card-actions">
             <a class="btn primary" href="${esc(g.url)}" target="_blank" rel="noopener">${ICON.play}플레이</a>
@@ -69,7 +70,7 @@
     $('#rToc').innerHTML = g.toc.map((t, i) => `<a href="#s${i + 1}" data-s="s${i + 1}"><b>${i + 1}</b>${esc(t)}</a>`).join('');
     const meta = [g.players, g.stack, g.updated && `작성 ${g.updated}`].filter(Boolean).map(x => `<span class="tag">${esc(x)}</span>`).join('');
     $('#rBody').innerHTML = g.has_trd
-      ? `<div class="meta">${meta}</div><p class="lead">${esc(g.tagline || '')}</p>${g.skill ? `<p><b>학습 목표</b> · ${esc(g.skill)}</p>` : ''}${g.html}`
+      ? `<div class="meta">${meta}</div><p class="lead">${esc(g.tagline || '')}</p>${g.skill ? `<p><b>학습 목표</b> · ${esc(g.skill)}</p>` : ''}${g.scope ? `<p><b>학습 범위</b> · ${esc(g.scope)}</p>` : ''}${g.html}`
       : '<p class="empty">TRD 작성 중입니다.</p>';
     $('#rBody').scrollTop = 0;
     $('#reader').classList.add('on'); $('#reader').setAttribute('aria-hidden', 'false');
