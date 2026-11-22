@@ -22,7 +22,7 @@ updated: 2026-11-22
 - 한 판 시간: 4라운드, 약 2~4분(추정 — 집게 동작과 정답 연출 시간으로 계산, 실측 아님). 실패가 많으면 코인이 떨어져 더 일찍 끝난다.
 
 ## 2. 게임 흐름
-1. 로딩 바 → 타이틀(로고, 기계, 떠다니는 글자 동전·음표, START). 첫 터치에 BGM + "Hi, friends! Welcome to Toy Catch! … Press start to play!".
+1. 로딩 바 → 타이틀(로고, 기계, 떠다니는 글자 동전·음표, START). 첫 터치에 BGM + "Hi, friends! Welcome to Toy Catch! … Press start to play!". (음악 볼륨 0.27, 2026-11-22에 0.11에서 올림)
 2. START(`startGame`, `js/game.js:1029`) → 카메라가 투입구로 가서 동전이 들어가고 기계 화면에 `INSERTED! / READY TO PLAY!` → "Ready? Let's play!" → 게임 화면, 코인 8개가 HUD로 들어온다.
 3. 라운드(`nextRound`, `:1076`, m/a/s/t 무작위 순서): 목표 글자(Mm) + GO! + "Catch a friend that starts with /m/ … /m/". 1라운드에서 첫 터치 전이면 장갑 손이 조이스틱 → DOWN을 시범(`runHint`, `:1644`).
 4. 조준: 조이스틱 드래그 · 기계 안 드래그 · 인형 탭(탭한 자리로) · ←→. 집게가 인형 머리 가운데 위에 오면 빛이 밝아지고 DOWN 버튼이 반짝인다.
