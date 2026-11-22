@@ -60,8 +60,9 @@ updated: 2026-11-22
 | 보상 | 획득 | 용도 | 저장 |
 |---|---|---|---|
 | 별 | 정답 +10 | 없음 | 안 됨(판마다 0) |
-| 코인 | 정답 +15 | 없음 | 안 됨 |
+| 코인 | 정답 +15 | 힌트 −5(5개 미만이면 힌트 버튼 회색, 2026-11-22) | 안 됨 |
 | 보석 | 정답 +3 | 없음 | 안 됨 |
+| 하트 | 시작 3 | 틀린 짝 −1, 0이면 판 끝 → 결과(2026-11-22) | 안 됨 |
 | 도감 카드 | 맞힌 합성어 | Compound Book 채우기 | `phonics_collected_v1` |
 
 - 상단 배지의 `+` → 재화 안내 모달(`GameScene.ts:1998-2008`: 힌트 −5, 별 100→동전 1, 보석으로 카드 소환 등). 문구만 있고 동작은 미구현.
@@ -163,4 +164,4 @@ updated: 2026-11-22
 - [낮음] 4:3에서 `+` 버튼 약 36 px(추정), viewport 확대 제한 없음, 세로 화면 대응 없음. BGM·SFX 설정이 저장되지 않는다.
 - [낮음] 도감 키 이름 `phonics_collected_v1`이 범용이라 같은 출처(jinilee-hue.github.io)의 2D 원본 등과 섞일 수 있다(추정).
 - [낮음] 기존 7개(moonlight, fireplace, handbag, doorbell, keyboard, watermelon, lighthouse)는 교재에 없음 — 엑셀 "빼기 검토".
-- [낮음] 이름 잔재(제목 "Prompt Crash", 패키지 `compound-crash`), `wordmashup.md` 낡음(30종·Back 버튼, 2026-07-06), `README.md` 없음(`README-3D.md`는 있음). 배경 4층·인트로 마크 제거 스크립트가 저장소 밖.
+- [낮음] 이름 잔재(제목 "Prompt Crash", 패키지 `compound-crash`), `wordmashup.md` 낡음(30종·Back 버튼, 2026-07-06), `README.md`는 2026-11-22에 새로 썼다(`README-3D.md`는 3D 상세). 배경 4층·인트로 마크 제거 스크립트가 저장소 밖.

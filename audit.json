@@ -327,39 +327,39 @@
     {
       "id": "stuck",
       "name": "막힘 없음",
-      "desc": "아이가 말을 안 하거나 손을 놓아도 게임이 계속되는지",
+      "desc": "말하기 침묵 → 약 20초 뒤 보상 없이 넘어감 · 손을 놓으면 안내 반복",
       "cells": {
         "eye-catch": [
           "ok",
-          "20초 뒤 넘어감"
+          "표준"
         ],
         "magic-block": [
           "ok",
-          "20초 뒤 넘어감"
+          "표준"
         ],
         "phonics-match": [
           "ok",
-          "20초 뒤 넘어감"
+          "표준"
         ],
         "croco": [
           "ok",
-          "20초 뒤 넘어감"
+          "표준"
         ],
         "word-mashup": [
           "ok",
-          "20초 뒤 넘어감"
+          "표준"
         ],
         "toy-catch": [
           "ok",
-          "라운드마다 안내"
+          "표준"
         ],
         "ring-ding-dong": [
           "ok",
-          "차례마다 안내"
+          "표준"
         ],
         "puzzle": [
           "ok",
-          "20초 뒤 넘어감"
+          "표준"
         ]
       }
     },
@@ -529,28 +529,28 @@
           "최신"
         ],
         "magic-block": [
-          "part",
-          "일부 옛날 것"
+          "ok",
+          "최신"
         ],
         "phonics-match": [
-          "part",
-          "README 최소"
+          "ok",
+          "최신"
         ],
         "croco": [
           "ok",
           "최신"
         ],
         "word-mashup": [
-          "part",
-          "README 없음"
+          "ok",
+          "최신"
         ],
         "toy-catch": [
-          "part",
-          "일부 옛날 것"
+          "ok",
+          "최신"
         ],
         "ring-ding-dong": [
-          "part",
-          "일부 어긋남"
+          "ok",
+          "최신"
         ],
         "puzzle": [
           "ok",
@@ -783,7 +783,15 @@
         "toy-catch",
         "ring-ding-dong"
       ],
-      "why": "코드와 다른 설명이 남아 있다. TRD는 이 런처에 있다."
+      "why": "코드와 다른 설명이 남아 있다. TRD는 이 런처에 있다.",
+      "status": {
+        "magic-block": "live",
+        "phonics-match": "live",
+        "word-mashup": "live",
+        "toy-catch": "live",
+        "ring-ding-dong": "live"
+      },
+      "note": "2026-11-22: 다섯 게임 README를 코드에 맞췄다(Word Mashup은 README.md 새로 씀)."
     },
     {
       "id": "F15",
