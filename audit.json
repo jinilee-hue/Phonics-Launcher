@@ -249,35 +249,35 @@
     {
       "id": "reward",
       "name": "보상",
-      "desc": "모은 것이 의미가 있는지(쓰기·모으기)",
+      "desc": "얻고 잃는 것이 있고, 모은 것을 쓰거나 모아 두는 곳이 있는지 (게임마다 따로)",
       "cells": {
         "eye-catch": [
-          "no",
-          "카드 수뿐"
+          "ok",
+          "별 + 카드 앨범"
         ],
         "magic-block": [
-          "no",
-          "블록 수뿐"
+          "ok",
+          "별 + 카드 앨범"
         ],
         "phonics-match": [
           "ok",
           "코인 → 옷"
         ],
         "croco": [
-          "no",
-          "승패와 무관"
+          "ok",
+          "카드 앨범"
         ],
         "word-mashup": [
-          "part",
-          "쓸 곳 없음"
+          "ok",
+          "보석 → 도감 카드"
         ],
         "toy-catch": [
-          "part",
-          "별, 저장 안 됨"
+          "ok",
+          "별 + 인형 모음"
         ],
         "ring-ding-dong": [
-          "no",
-          "S 토큰"
+          "ok",
+          "S → 종 꾸미기"
         ],
         "puzzle": [
           "ok",
@@ -673,7 +673,18 @@
         "ring-ding-dong",
         "puzzle"
       ],
-      "why": "게임마다 점수·코인·별이 따로고 쓸 곳이 없다. 같은 도메인이라 공통 스티커북(단어 스티커)을 두고, 어느 게임에서 맞힌 단어든 같은 책에 모이게 하면 세트 전체를 다시 할 이유가 된다."
+      "why": "게임마다 점수·코인·별이 따로고 쓸 곳이 없다. 같은 도메인이라 공통 스티커북(단어 스티커)을 두고, 어느 게임에서 맞힌 단어든 같은 책에 모이게 하면 세트 전체를 다시 할 이유가 된다.",
+      "status": {
+        "eye-catch": "kept",
+        "magic-block": "kept",
+        "phonics-match": "kept",
+        "croco": "kept",
+        "word-mashup": "kept",
+        "toy-catch": "kept",
+        "ring-ding-dong": "kept",
+        "puzzle": "kept"
+      },
+      "note": "사용자 결정(2026-11-22): 공통 스티커북 대신 게임마다 모으는 곳 — 카드 앨범(Eye-Catch·Magic Block·Croco), 인형 모음(Toy Catch), 종 꾸미기(Ring Ding Dong), 도감 카드(Word Mashup), 옷(Match), 스티커북(Puzzle). 점수 차감도 모든 게임에 있다."
     },
     {
       "id": "F7",
