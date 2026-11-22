@@ -4,8 +4,8 @@ title: Magic Block
 title_ko: 매직 블록
 tagline: 친구와 번갈아 m 블럭을 빼고 그 단어를 소리 내어 읽는 3D 젠가
 players: 2인
-skill: 첫글자 m 단어 고르기(함정 jam·lemon 구별) + 튜터를 따라 단어 말하기
-scope: FPR K U1 Mm · 직접 고른 m 단어 46개(함정 jam·lemon 포함), 그림·음성은 레슨팩
+skill: 첫글자 m 단어 고르기(같은 운의 다른 첫소리 단어와 구별) + 튜터를 따라 단어 말하기
+scope: FPR K U1L1 Mm · 레슨팩 m 단어 18개 + m이 없는 다른 알파벳 단어 26개
 stack: Vite + TypeScript + three.js + cannon-es (기기 안 인식 transformers.js whisper-tiny.en)
 repo: https://github.com/jinilee-hue/Magic-Block
 url: https://jinilee-hue.github.io/Magic-Block/
@@ -18,7 +18,7 @@ updated: 2026-11-22
 - **목적**: FPR K Unit 1의 m단어로 첫글자 m 찾기와 소리 내어 읽기를 2인 대전 젠가로 연습한다.
 - **대상 연령**: 5~7세(유치원). README는 "FPR K · 5세"라고 적고 있다.
 - **학습 목표**
-  - 탑에 쓰인 단어 중 m으로 시작하는 블럭을 고른다. 안에 m이 든 함정 단어 jam·lemon을 구별해야 한다.
+  - 탑에 쓰인 단어 중 m으로 시작하는 블럭을 고른다. 다른 단어에는 m이 하나도 없다(2026-11-22).
   - 블럭을 빼면 여우가 "Now say the word."와 함께 단어를 먼저 읽어 주고, 아이가 따라 읽는다. 혼자 해독하는 읽기가 아니라 따라 말하기다.
 - **플레이 인원**: 2인 고정이며 한 기기에서 번갈아 한다. 1인 모드는 없다.
 - **한 판 시간**: 6~10분(추정). m블럭 14개마다 읽기 차례가 있고, 잘못 고른 횟수에 따라 달라진다.
@@ -32,7 +32,7 @@ updated: 2026-11-22
    1. 여우가 "Player N, your turn!"이라고 말하고, 블럭을 고를 때까지 말풍선이 남아 있다.
    2. 탑을 드래그로 돌려 보고 블럭을 탭한다.
    3. **m블럭을 고른 경우**: 블럭이 빠져 떠오른 뒤 그림 카드로 회전한다. 여우가 단어를 읽고 마이크가 열린다. 판정에 통과하거나 실제 시도가 3번 통과하지 못하면("Good try!") 블럭을 얻는다. 블럭은 플레이어 카드로 날아가고 차례가 넘어간다.
-   4. **m이 아닌 블럭을 고른 경우**: 블럭이 흔들리기만 하고, 여우가 "Uh-oh! jam — It starts with /j/ /j/"라고 말한다. ✕가 하나 붙고 차례가 넘어간다. ✕가 2개가 되면 경고 대사가 나온다.
+   4. **m이 아닌 블럭을 고른 경우**: 블럭이 흔들리기만 하고, 여우가 "Uh-oh! dog — It starts with /d/ /d/"라고 말한다. ✕가 하나 붙고 차례가 넘어간다. ✕가 2개가 되면 경고 대사가 나온다.
 6. 종료 조건
    - m블럭을 다 빼면 탑이 와르르 무너지고, 블럭을 더 많이 모은 사람이 이긴다(동점 있음).
    - 한 사람의 ✕가 3개가 되면 탑이 넘어지고 그 사람이 진다.
@@ -41,16 +41,16 @@ updated: 2026-11-22
 ## 3. 콘텐츠·데이터
 | 구분 | 내용 | 개수 | 출처 |
 |---|---|---|---|
-| m단어 | man map mat match meat milk mirror mitt mitten monkey moon mop mouse mouth mug mushroom my mail mailbox mask | 20 | `tools/build_words.py`의 `M_WORDS`(하드코딩). FPR K Unit 1 장부(SAD·FPR 단어 연구 자료집)와 대조해 검증한다. |
-| 다른 단어 | pan van fan cap tap cat hat bat hop pop rug tail turkey spoon sit pie tie box sun dog sock six ten bag jam lemon | 26 | `OTHER`(하드코딩). jam·lemon은 매 판 들어가는 함정 단어다. |
-| 그림 카드 | m단어 중 mailbox를 뺀 19개 | 19 | 18개는 레슨팩 FP.K.U1L1 그림이다. mitten만 Phonics Island의 FPR K 그림이다. |
+| m단어 | mail man map mask mat match meat mice milk mirror mitt monkey moon mop mouse mouth mug mushroom | 18 | `tools/build_words.py`의 `M_WORDS` = 레슨팩 FP.K.U1L1의 m 단어 전부(2026-11-22, mice는 팩에만 있음). |
+| 다른 단어 | pan van fan cap tap cat hat bat hop pop rug tail turkey spoon sit pie tie box sun dog sock six ten bag duck fish | 26 | `OTHER`: FPR K Unit 1 단어 중 m이 하나도 없는 것(jam·lemon → duck·fish, 2026-11-22). |
+| 그림 카드 | m단어 18개 전부 | 18 | 모두 레슨팩 FP.K.U1L1 그림(대표이미지). |
 | 단어 음성 | m단어, /m/ 낱소리 | 137 클립(튜터 대사 포함) | 레슨팩 FP.K.U1L1의 공식 음성(m단어 18 + ten). 팩에 없는 단어는 phonics-api TTS, 다른 첫소리는 FPR K 공식 녹음이다. |
 
 - 데이터 파일
   - `src/data/words.json`: `target: 'm'`, 단어마다 `w`, `m`, `first`, `ko`, `pages`, `lessons`, `rivals`(라임 단어)
   - `cards.json`, `voice.json`, `mouth.json`
   - `phonemes.json`: 판정용 기대 소리열
-- 한 판 구성: 30블럭 = m단어 14 + jam·lemon + 다른 단어 14. m단어는 기기별 덱(`pj.mdeck.v1`) 순서대로 다음 14개를 쓰므로, 두 판을 하면 20개가 모두 나온다(`game.ts:115-135`).
+- 한 판 구성: 30블럭 = m단어 14 + 다른 단어 16. m단어는 기기별 덱(`pj.mdeck.v1`) 순서대로 다음 14개를 쓰므로, 두 판을 하면 18개가 모두 나온다.
 - **다른 레슨 추가**: 레슨팩 manifest를 읽는 로더가 없다. 목표 글자 m은 다음 세 곳에 고정돼 있다.
   - `words.json`의 `target`
   - 단어의 `m` 플래그
@@ -198,6 +198,6 @@ updated: 2026-11-22
   - 언어 토글이 게임 화면에 있다고 적혀 있다(README:27, 34). 실제로는 타이틀에만 있다.
   - 나가기를 두 번 탭해야 한다고 적혀 있다(README:28). 실제로는 한 번이다.
   - TTS를 Qwen3-TTS aiden이라고 적고 있다(README:64). 실제로는 Ava Multilingual이다.
-- **[낮음]** mailbox 그림 카드가 없다. mitten 카드는 공통 대표이미지로 아직 바꾸지 않았다.
+- [반영] m단어를 레슨팩 18개로 맞춰 모든 m단어에 레슨팩 그림·음성이 있다(2026-11-22). mitten·my·mailbox는 빠졌다.
 - **[낮음]** 인트로 영상과 동물별 에셋은 아직 없다(README:33, 35).
 - **[낮음]** 3D 블럭(특히 끝면)의 실제 탭 크기를 측정하지 않았다. 5세 손가락 기준으로 확인이 필요하다.
