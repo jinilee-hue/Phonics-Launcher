@@ -463,8 +463,8 @@
           "표준"
         ],
         "word-mashup": [
-          "ok",
-          "표준"
+          "na",
+          "별도(영어만)"
         ],
         "toy-catch": [
           "ok",
@@ -702,12 +702,12 @@
       "status": {
         "eye-catch": "live",
         "phonics-match": "live",
-        "word-mashup": "live",
+        "word-mashup": "kept",
         "toy-catch": "live",
         "ring-ding-dong": "live",
         "puzzle": "live"
       },
-      "note": "타이틀에만 · 처음 한국어 · 음성과 말풍선만 바뀌고 화면 글자는 영어. 저장은 게임마다 따로."
+      "note": "타이틀에만 · 처음 한국어 · 음성과 말풍선만 바뀌고 화면 글자는 영어. 저장은 게임마다 따로. Word Mashup은 별도 — 언어 선택 없이 영어(사용자 결정)."
     },
     {
       "id": "F9",
