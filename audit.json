@@ -203,7 +203,7 @@
         ],
         "puzzle": [
           "part",
-          "3레벨 고정(조각 수만 늘어남)"
+          "3레벨(2×2·3×2·3×3) 고르기 가능, 차이는 조각 수"
         ]
       }
     },
@@ -241,8 +241,8 @@
           "공통 기록 저장(화면 변화 없음)"
         ],
         "puzzle": [
-          "part",
-          "스티커북만, 항상 레벨 1부터"
+          "ok",
+          "공통 기록 + 레벨 고르기·이어 하기(START 옆 격자 칩)"
         ]
       }
     },
@@ -643,9 +643,9 @@
         "croco": "live",
         "word-mashup": "live",
         "ring-ding-dong": "live",
-        "puzzle": "todo"
+        "puzzle": "live"
       },
-      "note": "2026-11-22: 공통 키 phonics.progress(phonics-kit/phonics-progress.js). 레벨 없는 게임은 기록만(사용자 결정), Croco는 레벨 고르기·이어 하기."
+      "note": "2026-11-22: 공통 키 phonics.progress(phonics-kit/phonics-progress.js). 레벨 없는 게임은 기록만(사용자 결정), Croco는 레벨 고르기·이어 하기. Puzzle도 레벨 고르기·이어 하기(조각 격자 칩) 적용."
     },
     {
       "id": "F3",
