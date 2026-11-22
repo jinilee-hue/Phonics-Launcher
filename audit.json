@@ -303,12 +303,12 @@
           "표준"
         ],
         "croco": [
-          "part",
-          "기기 인식 없음"
+          "ok",
+          "표준"
         ],
         "word-mashup": [
-          "part",
-          "브라우저 인식"
+          "ok",
+          "표준"
         ],
         "toy-catch": [
           "no",
@@ -510,8 +510,8 @@
           "표준"
         ],
         "ring-ding-dong": [
-          "part",
-          "볼륨 추가"
+          "ok",
+          "표준"
         ],
         "puzzle": [
           "ok",
@@ -606,7 +606,7 @@
         "ring-ding-dong": "live",
         "puzzle": "live"
       },
-      "note": "2026-11-22: 공통 키 phonics.progress(phonics-kit/phonics-progress.js). 레벨 없는 게임은 기록만(사용자 결정), Croco는 레벨 고르기·이어 하기. Puzzle도 레벨 고르기·이어 하기(조각 격자 칩) 적용."
+      "note": "2026-11-22: 공통 키 phonics.progress(phonics-kit/phonics-progress.js). 레벨 없는 게임은 기록만(사용자 결정), Croco는 레벨 고르기·이어 하기. Puzzle도 레벨 고르기·이어 하기 — 퍼즐판 LEVEL 탭에서 고른다."
     },
     {
       "id": "F3",
