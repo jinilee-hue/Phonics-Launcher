@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phonics Games</title>
+<link rel="stylesheet" href="css/font.css">
+<link rel="stylesheet" href="css/launcher.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <div><h1>Phonics Games</h1><p class="sub" id="sub">FPR K · 파닉스 게임 모음</p></div>
+  </div>
+  <nav class="tabs" role="tablist">
+    <button class="tab on" data-tab="games" role="tab"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/></svg>게임</button>
+    <button class="tab" data-tab="audit" role="tab"><svg viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/><path d="M9 3v18M15 3v18"/></svg>점검표</button>
+    <button class="tab" data-tab="fixes" role="tab"><svg viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m3.5 6 1.5 1.5L7.5 5M3.5 12 5 13.5 7.5 11M3.5 18 5 19.5 7.5 17"/></svg>보완 목록</button>
+  </nav>
+</header>
+
+<main>
+  <!-- games -->
+  <section class="panel on" id="p-games">
+    <div class="chips" id="filters">
+      <button class="chip on" data-f="all">전체</button>
+      <button class="chip" data-f="solo">1인</button>
+      <button class="chip" data-f="duo">2인</button>
+      <button class="chip" data-f="speak">말하기</button>
+      <button class="chip" data-f="pack">레슨팩 Mm</button>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <!-- audit matrix -->
+  <section class="panel" id="p-audit">
+    <div class="legend"><span><i class="st ok"></i>있음</span><span><i class="st part"></i>일부</span><span><i class="st no"></i>없음</span><span><i class="st na"></i>해당 없음</span></div>
+    <div class="matrix-wrap"><table class="matrix" id="matrix"></table></div>
+  </section>
+
+  <!-- fixes -->
+  <section class="panel" id="p-fixes">
+    <div class="fix-bar">
+      <div class="chips" id="priFilter">
+        <button class="chip on" data-p="all">전체</button>
+        <button class="chip" data-p="높음">높음</button>
+        <button class="chip" data-p="중간">중간</button>
+        <button class="chip" data-p="낮음">낮음</button>
+      </div>
+      <button class="btn primary" id="copySel"><svg viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4h-9A1.5 1.5 0 0 0 4 5.5v9A1.5 1.5 0 0 0 5.5 16H8"/></svg><span id="copyTxt">고른 항목 복사</span></button>
+    </div>
+    <div id="fixList"></div>
+  </section>
+</main>
+
+<!-- TRD reader -->
+<div class="reader" id="reader" aria-hidden="true">
+  <div class="reader-card" role="dialog" aria-modal="true" aria-labelledby="rTitle">
+    <aside class="reader-side">
+      <img id="rImg" alt="">
+      <h2 id="rTitle"></h2>
+      <p class="rko" id="rKo"></p>
+      <div class="rlinks">
+        <a class="btn primary" id="rPlay" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10-6.5z"/></svg>플레이</a>
+        <a class="btn" id="rRepo" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M9 19c-4 1.5-4-2-6-2.5M15 21v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>저장소</a>
+      </div>
+      <nav class="toc" id="rToc"></nav>
+      <button class="btn ghost" id="rPrint"><svg viewBox="0 0 24 24"><path d="M7 9V3.5h10V9"/><rect x="3.5" y="9" width="17" height="8" rx="2"/><path d="M7 14h10v6.5H7z"/></svg>인쇄 · PDF</button>
+    </aside>
+    <article class="reader-body" id="rBody"></article>
+    <button class="close" id="rClose" aria-label="닫기"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/launcher.js"></script>
+</body>
+</html>

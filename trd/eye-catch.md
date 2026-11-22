@@ -1,0 +1,156 @@
+---
+id: eye-catch
+title: Eye Catch
+title_ko: 아이캐치
+tagline: 두 카드에 함께 있는 그림을 먼저 찾아 버튼을 누르고 말하는 게임
+players: 2인
+skill: 첫소리 m 단어(FP.K.U1L1) 그림 보고 단어 말하기
+stack: Vanilla JS + three.js r186 (빌드 없음)
+repo: https://github.com/jinilee-hue/Eye-Catch
+url: https://jinilee-hue.github.io/Eye-Catch/
+updated: 2026-11-22
+---
+
+# Eye Catch TRD
+
+## 1. 개요
+- 목적: 두 카드에 딱 하나 같은 그림이 있다. 먼저 찾은 아이가 자기 버튼을 누르고 단어를 말하면 튜터(눈 하나 외계인)가 발음을 확인하고, 맞으면 카드를 가져간다.
+- 대상 연령: 5–7세(FPR K 교재 Unit 1 Lesson 1 "Mm").
+- 학습 목표: m으로 시작하는 단어 12개를 그림으로 알아보고 단어 전체를 소리 내 말하기. 정답을 공개할 때 "/m/ /m/ + 단어" 챈트로 첫소리를 함께 들려준다(`js/audio.js:87`).
+- 플레이 인원: 2인, 한 기기에서 대결(화면 아래 양쪽 모서리 버튼). 1인 모드와 컴퓨터 상대는 없다.
+- 한 판 시간: 10라운드 + 첫 판 규칙 설명(약 30초) 기준 4–7분(추정).
+
+## 2. 게임 흐름
+1. 타이틀: 로고, 3D 카드통, 카드 두 장을 든 튜터, START. 첫 터치에 소리를 켜고 배경음악을 틀며 기기 안 음성인식 모델을 미리 받는다(`game.js:139-149`).
+2. START: 마이크 권한을 한 번 묻는다. 1.4초 뒤 튜터가 "마이크를 허용해 줘"라고 말하고, 15초 안에 응답이 없으면 그대로 진행한다(`game.js:198-204`).
+3. 규칙 설명(이 페이지에서 첫 판만): 데모 카드 2장으로 같은 그림을 표시하고 양쪽 버튼을 가리킨다. Skip 버튼이 있다(`game.js:222-261`).
+4. 덱에서 카드 2장이 뒤집혀 나오고 튜터가 "Ready? Go!"라고 말한다.
+5. 한 라운드
+   1. 두 버튼이 준비 상태가 된다. 6초 뒤 손 안내, 14초·28초에 힌트, 42초가 지나면 아무도 못 맞힌 것으로 처리한다(`game.js:308-314`).
+   2. 먼저 누른 아이가 단어를 말한다. 버튼 누르기 0.7초 전 소리부터 녹음에 들어간다(`js/mic.js`).
+   3. 맞으면 빛 효과와 가운데 단어 카드를 띄우고 챈트와 칭찬을 들려준다. 왼쪽 카드는 이긴 아이 쪽 탁자 가장자리로 날아간다.
+   4. 틀리면 그 아이 버튼이 잠기고 상대에게 기회가 간다. 둘 다 틀리면 정답을 공개하고 카드를 버린다(`game.js:444-472`).
+   5. 오른쪽 카드가 왼쪽으로 옮겨 가고 덱에서 새 카드가 나온다. 마지막 라운드 전에 "Last card!"라고 말한다.
+6. 10라운드가 끝나면 결과 화면을 띄운다. 다시 하기는 2단계(규칙 설명은 생략), 처음으로는 타이틀로 간다.
+
+## 3. 콘텐츠·데이터
+- 단어 12개: man map meat milk mirror mitt monkey moon mop mouse mug mushroom.
+- 출처: 레슨팩 `FP.K.U1L1`(공통자료)을 `phonics-kit/tools/lessonpack.py`로 읽는다. 그림은 파닉스 공통 대표 이미지이고, 단어 음성과 /m/ 음가는 팩 녹음이다.
+- 데이터 파일: `js/words.js`(단어·한글 뜻·서버 판정용 기대 음소열 `ph`·그림 경로), `js/cards-art.js`(그림 data URL), `assets/cards/*.webp`. 셋 다 생성물이라 손으로 고치지 않는다.
+- 덱(`js/cards.js`): 카드 한 장에 그림 6개를 둔다. 이웃한 두 카드가 정확히 1개를 공유하는 사슬 구조이고, 정답이 12단어에 고르게 돌아가도록 한다.
+- 다른 레슨을 넣는 방법(현재 반자동)
+  1. `tools/build_cards.py:16-17`, `tools/build_voice.py:22`의 레슨 코드와 단어 목록을 바꾼다.
+  2. `build_cards.py`의 `'title': 'Mm'`, `'lesson': 1` 하드코딩을 바꾼다.
+  3. 챈트 키 `'s:m'`(`js/audio.js:87`)을 바꾼다.
+  4. 음성인식의 비슷한 단어 표 `SAME`(`js/stt.js:49`)을 바꾼다.
+  5. "모든 그림이 m으로 시작한다"는 전제로 세운 판정 규칙(`js/stt.js:63-65`)을 다시 맞춘다.
+  6. 덱을 만들려면 단어가 11–12개 이상 필요하다(추정, 카드당 6개 + 5개 교체).
+
+## 4. 레벨·난이도
+| 항목 | 내용 |
+|---|---|
+| 라운드 | 10라운드 고정(`game.js:14`) |
+| 레벨 | 없음 |
+| 판마다 바뀌는 것 | 무작위 덱 구성뿐 |
+| 타이머 | 화면에 안 보임. 6초 손 안내, 14·28초 힌트, 42초 시간 초과 공개 |
+| 말하기 대기 | 첫 시도 4.2초, 다시 말하기 5초(`game.js:352`) |
+| 그림 누르기 모드 대기 | 9초가 지나면 오답(`game.js:390`) |
+| 적응형 | 없음 |
+| 레벨 선택 | 없음(아이·교사 모두) |
+
+## 5. 보상·피드백
+- 점수: 가져간 카드 수. 아래 패드 캡슐에 숫자로 표시한다. 딴 카드는 탁자 가장자리에 쌓이기만 하고 쓰거나 모을 곳이 없다(`game.js:479-509`).
+- 정답 연출: 그림 주위 빛 링, 빛 리본, 덱 뒤 햇살, 반짝이, 가운데 단어 카드(그림 + 단어 + 다시 듣기 버튼, `game.js:410-421`), 칭찬 3종 무작위.
+- 결과 화면(`game.js:526-546`): 두 아바타와 카드 수, "Player 1 wins!" / "비겼어요!"(언어에 따라), 이긴 쪽 3D 왕관(WebGL이 없으면 CSS 왕관), 색종이와 불꽃, Play again / Home 버튼, 튜터 축하 대사.
+- 저장: 기록·진도·별은 저장하지 않는다(10장 참고).
+
+## 6. 튜터·음성·발음 판정
+- 튜터: 눈 하나 외계인. `js/monster.js`의 SDF 클레이 3D 모델로 눈, 눈꺼풀, 입 모양 3단, 팔, 다리를 움직인다.
+- 튜터 음성: 회사 phonics-api TTS, 목소리 `en-US-AvaMultilingualNeural`(파닉스 공통 튜터 목소리, `js/voice.js:3-4`). 영어 23줄과 한국어 23줄이다.
+- 단어 음성: 레슨팩 녹음(mirror·mitt·mushroom은 WAV, 나머지는 공식 MP3).
+- 발음 판정(`game.js:274-299`)
+  - 회사 phonics-api `POST /v1/speech/analyze`로 16kHz WAV를 보낸다. 서버는 녹음을 저장하지 않는다. 서버가 들은 음소열을 탁자 위 모든 그림의 기대 음소열과 비교한다(`PhonicsAPI.judge`). 서버 자체의 `success` 값은 쓰지 않는다.
+  - 기기 안 whisper tiny.en(`js/stt.js`, `js/stt-worker.js`, `stt/` 55MB)을 동시에 돌린다. 서버가 다른 그림으로 들었거나 확신이 없을 때 이 결과로 합의한다.
+  - 서버 제한 시간은 6초다. 네트워크 오류면 1분, 서버 혼잡이면 15초 동안 서버를 건너뛴다(`js/phonics-api.js:21,122,129`).
+  - 키가 없으면 whisper만 쓰고, whisper도 못 쓰면(file:// 등) 그림 누르기로 바뀐다.
+  - ih와 iy를 같은 소리로 보기 때문에 meat와 mitt는 서로 통과된다(README).
+  - 키는 교사가 타이틀의 열쇠 버튼으로 기기마다 한 번 입력한다. 코드와 저장소에는 넣지 않는다.
+
+## 7. 화면·UI 요구사항
+- 기준 해상도: 2400×1792(4:3) 무대를 창에 맞춰 축소한다(`--k`, `game.js:21-29`). 3D 캔버스는 창 전체를 덮어 16:9에서도 가장자리가 채워진다. iPad 4:3은 그대로 맞는다.
+- 상단 바: 왼쪽에 phonics-api 키 버튼(타이틀만, 점 색 민트 = 서버 판정, 모래색 = 기기 판정). 오른쪽에 언어 토글(타이틀만, `style.css:287`), 소리 켜기/끄기, 나가기(모든 화면).
+- 언어 토글: 국기 2개. 튜터 음성과 결과 문구만 바뀌고 "Player 1/2" 표시는 영어로 고정이다. 기본값은 한국어(`audio.js:9`).
+- 버튼 크기: 아이 버튼은 무대 기준 314px로, 1024×768 iPad에서 약 134px(계산값)이다. 상단 버튼은 Toy Catch 기준(7.6tu)이라 같은 화면에서 약 44px(계산값)이다.
+- 키보드: 1번 친구 `A`/`Q`/`←`/왼쪽 Shift, 2번 친구 `L`/`P`/`→`/오른쪽 Shift, 타이틀에서 `Space`/`Enter`로 시작.
+- 예외 상태
+  - 마이크 거부·없음·file://: 버튼을 누른 뒤 그림 누르기로 답한다(9초).
+  - 오프라인·키 없음·서버 혼잡: 기기 안 whisper로 판정한다.
+  - 말이 없을 때: "Say it!", 알아듣지 못했을 때: "One more time!"으로 한 번 더 기회를 주고, 그다음은 오답이다(`game.js:346-371`).
+
+## 8. 기술 구성
+- 스택: Vanilla HTML/CSS/JS, 빌드 없음. 외부 라이브러리는 three.js r186(`vendor/three.iife.js`)과 ONNX Runtime WASM + whisper tiny.en(`stt/`, Phonics Match 워커 재사용)이다.
+
+| 파일 | 역할 |
+|---|---|
+| `js/game.js` | 화면 흐름, 버튼, 라운드, 판정 흐름, 결과 |
+| `js/cards.js` | 공유 그림 1개 사슬 덱 |
+| `js/card3d.js` | 3D 카드(원판, 앞면 캔버스 텍스처, 덱, 그림 누르기 피킹) |
+| `js/monster.js` · `js/sdf.js` | 3D 튜터, SDF 메셔 |
+| `js/tin3d.js` · `js/crown3d.js` · `js/hand3d.js` | 타이틀 카드통, 결과 왕관, 손 안내 |
+| `js/mic.js` | 마이크, 1.2초 링버퍼, 음성 구간 검출, 16kHz 변환 |
+| `js/phonics-api.js` | phonics-kit 사본(키, 상태, analyze, judge, 키 입력 창) |
+| `js/stt.js` · `js/stt-worker.js` | 기기 안 판정(whisper) |
+| `js/audio.js` | 튜터 음성 재생, 효과음 합성, 배경음악, 입모양 음량 |
+| `js/fx.js` | 반짝이, 리본, 색종이 |
+| `js/words.js` · `cards-art.js` · `art.js` · `voice.js` · `voice-data.js` · `bgm-data.js` · `logo-data.js` | 생성물(데이터, base64) |
+
+- 실행: `실행.command`를 더블클릭하면 `python3 tools/serve.py 5261`(no-cache)로 크롬을 연다. 파일로 열어도 동작하지만 그러면 그림 누르기 모드다.
+- URL 옵션: `?fast=1`, `?tap=1`, `?fake=1`, `?answer=<단어>`, `?log=1`, `?debug`(phonics-api 시도 표시).
+- 배포: GitHub Pages(`.nojekyll`). 커밋 전에 `python3 tools/stamp.py`로 css/js 링크에 내용 해시를 붙인다(Pages 10분 캐시 대응).
+
+## 9. 에셋·생성 파이프라인
+| 대상 | 스크립트·명령 | 출력 |
+|---|---|---|
+| 카드 그림·단어 목록 | `uv run --with pillow python tools/build_cards.py` | `assets/cards/*`, `js/words.js`, `js/cards-art.js` |
+| 스프라이트 컷 | `tools/cut_sprites.py`(rembg birefnet), `tools/cut_tin.py`(LaMa 2단계) | `design/work/cut/*` |
+| 배경·로고·버튼 | `uv run --with pillow --with numpy python tools/build_art.py` | `assets/img/*`, `js/art.js` |
+| 단어·튜터 음성 | `uv run --with numpy python tools/build_voice.py`(기본 엔진 phonics-api, `--engine qwen` = 옛 목소리) | `assets/voice/*`, `js/voice.js`, `js/voice-data.js` |
+| 음성 되읽기 검사 | `tools/voice_check.py`(whisper medium) | 콘솔 |
+| 배경음악 | `uv run --with numpy --with scipy python tools/make_bgm.py`(phonics-kit `bgm_engine.py` 사용, B♭ 144 BPM 퀴즈쇼 스윙) | `assets/audio/bgm.mp3`, `js/bgm-data.js` |
+
+## 10. 저장 데이터
+| 키 | 내용 |
+|---|---|
+| `ecLang` | 튜터 언어 `'ko'` 또는 `'en'`(`js/audio.js:10,112`) |
+| `phonics_api_key` | 교사가 입력한 phonics-api 키(`js/phonics-api.js`). 다른 파닉스 페이지와 같은 이름 |
+
+- 점수·진도·단어별 결과는 저장하지 않는다. 규칙 설명을 봤는지도 메모리에만 있어서 새로고침하면 다시 나온다.
+
+## 11. QA
+| 스크립트 | 검사 내용 | 통과 기준 |
+|---|---|---|
+| `tools/qa/flow.py <out> [W H]` | `?fake=1`로 10라운드 전체, 기회 넘김, 아무도 못 맞힌 라운드, 결과/다시 하기/홈 | 스크린샷 정상, 콘솔 오류·HTTP 400 이상 없음 |
+| `tools/qa/stt_check.py` | `dev/stt.html` 12단어 녹음 × 12정답 판정표 + 단어가 아닌 소리 | 대각선만 OK |
+| `tools/qa/say_flow.py <wav> <정답> [ok\|miss] [api\|device]` | 마이크 경로 전체(getUserMedia만 WAV 스트림으로 대체) | 기대 결과와 일치 |
+| `tools/qa/api_vs_device.py` | 서버 / 기기 / 둘 다 판정 비교(`dev/eval`, 공식 녹음 + 아이 같은 목소리 + 소음) | 맞는 단어는 통과, 다른 단어는 불통과(README 실측 통과 90.6%, 오통과 5.7%) |
+| `node ../phonics-kit/tools/qa_judge.mjs` | phonics-api 판정 규칙(12단어 × 팩 녹음 + TTS 4목소리) | 대각선만 OK |
+| `tools/qa/monster_cmp.py` · `tools/qa/shot.py` | 3D 튜터와 목업 비교, 화면 스냅샷 | 눈으로 확인 |
+
+- 모든 스크립트는 `uv run --with playwright==1.62.0`으로 실행한다. 키는 로컬 설정 파일에서 읽어 브라우저에 넣기만 하고 출력하지 않는다.
+
+## 12. 알려진 이슈·보완 필요
+- [높음] 공통 규칙(Skip·Jump): 말하기 Jump 버튼 — 버튼 없음, 2번 뒤 자동 오답. Phonics Match의 Jump 버튼처럼 둔다(2026-11-22 규칙).
+- [높음] 2인 전용이다. 혼자 하는 아이, 가정 학습, 교실 전체 모드가 없다(컴퓨터 상대 없음).
+- [높음] 진도·기록을 저장하지 않는다. 교사가 볼 단어별 정답률이나 시도 기록이 없고, 다시 할 동기는 승부뿐이다.
+- [중간] 레벨이 없다. 10라운드와 12단어가 고정이고 적응형 난이도도 없다.
+- [중간] 레슨이 하드코딩돼 있다. 다른 레슨으로 바꾸려면 빌드 스크립트 2곳, 제목, 챈트, `SAME` 표, m 전제 판정 규칙을 함께 고쳐야 한다(3장).
+- [중간] 그림 누르기 모드에서 버튼을 누른 아이가 아니어도 누구 손가락이든 정답으로 인정된다(`game.js:381-388`).
+- [중간] phonics-api 키를 교사가 기기마다 입력해야 한다. 키가 없으면 55MB 모델을 받고, 판정이 최대 20초까지 기다릴 수 있다(`js/stt.js:53`).
+- [중간] meat와 mitt가 서로 통과되고(ih=iy) 다른 단어 오통과가 약 5.7%라서 모음 구분은 훈련되지 않는다.
+- [낮음] 마이크 권한 창에 응답이 없으면 게임 시작이 최대 15초 늦어진다.
+- [낮음] 딴 카드를 쓰거나 모을 곳이 없고, 결과 화면에 이번 판 단어 복습이 없다.
+- [낮음] 언어 기본값이 한국어로, Ring Ding Dong(영어)과 반대다. "Player 1/2"는 한국어 모드에서도 영어다.
+- [낮음] 규칙 설명을 봤는지가 메모리에만 있어서 새로고침할 때마다 다시 나온다(Skip은 있음).
+- [낮음] 상단 시스템 버튼이 4:3 iPad에서 약 44px로 최소 권장 크기 경계다(계산값, 실기기 미확인).
+- [낮음] README가 낡았다. 튜터 음성을 사내 TTS `qwen-tts` aiden이라고 적었지만 실제는 phonics-api Ava Multilingual이다(`js/voice.js:3-4`). 배경음악을 D장조 112 BPM이라고 적었지만 실제는 B♭ 144 BPM 스윙이다(`tools/make_bgm.py`, `js/bgm-data.js`).
+- 코드에 TODO/FIXME는 없다.
