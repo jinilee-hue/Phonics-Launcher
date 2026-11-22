@@ -210,39 +210,39 @@
     {
       "id": "save",
       "name": "진도 저장",
-      "desc": "다시 들어왔을 때 이어서 하거나 레벨을 고를 수 있는지",
+      "desc": "판이 끝나면 공통 기록 · 레벨이 있는 게임은 이어 하기",
       "cells": {
         "eye-catch": [
           "ok",
-          "공통 기록"
+          "표준"
         ],
         "magic-block": [
           "ok",
-          "공통 기록"
+          "표준"
         ],
         "phonics-match": [
           "ok",
-          "기록 + 레벨·코인"
+          "표준"
         ],
         "croco": [
           "ok",
-          "기록 + 이어 하기"
+          "표준"
         ],
         "word-mashup": [
           "ok",
-          "공통 기록"
+          "표준"
         ],
         "toy-catch": [
           "ok",
-          "공통 기록"
+          "표준"
         ],
         "ring-ding-dong": [
           "ok",
-          "공통 기록"
+          "표준"
         ],
         "puzzle": [
           "ok",
-          "기록 + 이어 하기"
+          "표준"
         ]
       }
     },
@@ -288,27 +288,27 @@
     {
       "id": "speak",
       "name": "발음 판정",
-      "desc": "아이가 말하고, phonics-api + 기기 안 인식으로 판정하는지",
+      "desc": "phonics-api 먼저, 안 되면 기기 안 인식(whisper)",
       "cells": {
         "eye-catch": [
           "ok",
-          "api + 기기"
+          "표준"
         ],
         "magic-block": [
           "ok",
-          "api + 기기"
+          "표준"
         ],
         "phonics-match": [
           "ok",
-          "api + 기기"
+          "표준"
         ],
         "croco": [
-          "ok",
-          "api"
+          "part",
+          "기기 인식 없음"
         ],
         "word-mashup": [
-          "ok",
-          "api"
+          "part",
+          "브라우저 인식"
         ],
         "toy-catch": [
           "no",
@@ -320,7 +320,7 @@
         ],
         "puzzle": [
           "ok",
-          "api + 기기"
+          "표준"
         ]
       }
     },
@@ -331,7 +331,7 @@
       "cells": {
         "eye-catch": [
           "ok",
-          "42초면 정답"
+          "20초 뒤 넘어감"
         ],
         "magic-block": [
           "ok",
@@ -347,19 +347,19 @@
         ],
         "word-mashup": [
           "ok",
-          "안내·힌트"
+          "20초 뒤 넘어감"
         ],
         "toy-catch": [
-          "part",
-          "안내 끊김"
+          "ok",
+          "라운드마다 안내"
         ],
         "ring-ding-dong": [
           "part",
-          "계속 기다림"
+          "안내 2번 뒤 대기"
         ],
         "puzzle": [
           "ok",
-          "2번 놓치면 넘어감"
+          "20초 뒤 넘어감"
         ]
       }
     },
@@ -444,39 +444,39 @@
     {
       "id": "lang",
       "name": "언어 토글",
-      "desc": "공통: 타이틀에만, 국기 토글. 범위와 기본값이 게임마다 다름",
+      "desc": "타이틀에만 · 처음 한국어 · 음성과 말풍선만 바뀜 (화면 글자는 영어)",
       "cells": {
         "eye-catch": [
-          "part",
-          "음성·결과 문구"
+          "ok",
+          "표준"
         ],
         "magic-block": [
           "ok",
-          "전체"
+          "표준"
         ],
         "phonics-match": [
-          "part",
-          "음성만"
+          "ok",
+          "표준"
         ],
         "croco": [
           "ok",
-          "대사·화면"
+          "표준"
         ],
         "word-mashup": [
-          "no",
-          "토글 없음"
+          "ok",
+          "표준"
         ],
         "toy-catch": [
-          "part",
-          "음성만"
+          "ok",
+          "표준"
         ],
         "ring-ding-dong": [
-          "part",
-          "음성·말풍선"
+          "ok",
+          "표준"
         ],
         "puzzle": [
-          "part",
-          "음성만"
+          "ok",
+          "표준"
         ]
       }
     },
@@ -698,7 +698,16 @@
         "ring-ding-dong",
         "puzzle"
       ],
-      "why": "기본값이 한국어·영어로 갈리고, 음성만 바뀌는 게임과 화면 글자까지 바뀌는 게임이 섞였다. Word Mashup은 토글이 없다. 기본값과 바뀌는 범위를 하나로 정한다."
+      "why": "기본값이 한국어·영어로 갈리고, 음성만 바뀌는 게임과 화면 글자까지 바뀌는 게임이 섞였다. Word Mashup은 토글이 없다. 기본값과 바뀌는 범위를 하나로 정한다.",
+      "status": {
+        "eye-catch": "live",
+        "phonics-match": "live",
+        "word-mashup": "live",
+        "toy-catch": "live",
+        "ring-ding-dong": "live",
+        "puzzle": "live"
+      },
+      "note": "타이틀에만 · 처음 한국어 · 음성과 말풍선만 바뀌고 화면 글자는 영어. 저장은 게임마다 따로."
     },
     {
       "id": "F9",
@@ -722,9 +731,10 @@
       ],
       "why": "Croco 버튼 6.2u(약 39px), Word Mashup 자체 상단 바, Toy Catch는 결과 화면에도 언어 토글이 보인다.",
       "status": {
-        "croco": "live"
+        "croco": "live",
+        "toy-catch": "live"
       },
-      "note": "Croco는 표준과 같다(1024×768에서 Toy Catch와 같은 크기·자리)."
+      "note": "Croco·Toy Catch는 표준. Word Mashup 남음."
     },
     {
       "id": "F11",
@@ -742,7 +752,8 @@
       "games": [
         "toy-catch"
       ],
-      "why": "1라운드에서 코인 8개를 다 쓰면 a·s·t를 못 보고 끝난다. 'LEVEL 1' 표시는 실제 레벨과 무관하다. 대기 안내는 1라운드에만 나온다."
+      "why": "1라운드에서 코인 8개를 다 쓰면 a·s·t를 못 보고 끝난다. 'LEVEL 1' 표시는 실제 레벨과 무관하다. 대기 안내는 1라운드에만 나온다.",
+      "note": "대기 안내는 매 라운드로 고쳤다. 코인·LEVEL 1 표시는 남음."
     },
     {
       "id": "F13",
