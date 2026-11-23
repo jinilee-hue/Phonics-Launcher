@@ -15,7 +15,7 @@ GAMES = {
     'puzzle': 'https://jinilee-hue.github.io/Phonics-Puzzle/',
     'phonics-run': 'https://jinilee-hue.github.io/Phonics-Run/',
 }
-WAIT = {'phonics-run': 7, 'word-mashup': 9, 'magic-block': 8, 'toy-catch': 8, 'ring-ding-dong': 8, 'eye-catch': 7, 'croco': 7}
+WAIT = {'phonics-run': 12, 'word-mashup': 9, 'magic-block': 8, 'toy-catch': 8, 'ring-ding-dong': 8, 'eye-catch': 7, 'croco': 7}
 pick = sys.argv[1:] or list(GAMES)
 with sync_playwright() as p:
     b = p.chromium.launch(args=['--use-gl=angle', '--use-angle=swiftshader', '--autoplay-policy=no-user-gesture-required'])
