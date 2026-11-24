@@ -1,0 +1,113 @@
+/* 아케이드 나이트 테마 (사용자 2026-11-24, 시안 3개 중 B) — launcher.css 위에 덮어씀.
+   어두운 무대 위 게임 진열대: 위에 '오늘의 게임'(js/launcher.js featured)을 크게, 아래 썸네일 줄로 바꿔 본다.
+   토큰을 어둡게 바꿔서 점검표 · 보완 목록 · TRD 창도 같이 어두워짐. 게임별 색 = --gc (그림 파일 이름으로). 인쇄는 밝은 토큰으로 되돌림. */
+:root {
+  --bg: #120f2a;
+  --bg-2: #1d1842;
+  --card: #1c1840;
+  --ink: #f3f0ff;
+  --ink-2: #b9b2dd;
+  --ink-3: #8a82b8;
+  --line: #2c2658;
+  --line-2: #3a3370;
+  --glow-1: #7b5cff;
+  --glow-2: #ff5fa2;
+  --glow-3: #2fd4e6;
+  --cta-1: #ff8a3d;
+  --cta-2: #ff4f8b;
+  --ok-soft: #1b4a3a;
+  --no-soft: #4a1f39;
+  --shadow: rgba(0, 0, 0, .35);
+  --shadow-2: rgba(0, 0, 0, .55);
+  --dim: rgba(8, 6, 24, .7);
+}
+body { background:
+    radial-gradient(800px 500px at 15% -10%, color-mix(in srgb, var(--glow-1) 35%, transparent), transparent 70%),
+    radial-gradient(700px 500px at 95% 10%, color-mix(in srgb, var(--glow-2) 22%, transparent), transparent 70%),
+    radial-gradient(900px 600px at 50% 110%, color-mix(in srgb, var(--glow-3) 14%, transparent), transparent 70%), var(--bg);
+  background-attachment: fixed; }
+.top { background: color-mix(in srgb, var(--bg) 70%, transparent); border-bottom: 1px solid var(--line); }
+h1 { color: var(--white); }
+.tabs { background: var(--bg-2); box-shadow: inset 0 0 0 1px var(--line-2); }
+.tab { color: var(--ink-2); }
+.tab.on { background: linear-gradient(90deg, var(--cta-1), var(--cta-2)); color: var(--white); box-shadow: 0 6px 18px color-mix(in srgb, var(--cta-2) 45%, transparent); }
+.tab:not(.on):hover { background: var(--line); }
+
+/* featured: 큰 그림 + 정보 */
+.feat { --gc: var(--glow-1); display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 34px; align-items: center; margin: 10px 0 18px; }
+.feat-img { position: relative; border-radius: 24px; overflow: hidden; aspect-ratio: 16 / 9;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--gc) 70%, transparent), 0 20px 60px color-mix(in srgb, var(--gc) 45%, transparent), 0 30px 60px var(--shadow-2); transition: box-shadow .4s; }
+.feat-img img { width: 100%; height: 100%; object-fit: cover; display: block; animation: kb 9s ease-out both; }
+@keyframes kb { from { scale: 1.06; } to { scale: 1; } }
+.feat-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 60%, rgba(10, 8, 30, .45)); pointer-events: none; }
+.feat-kicker { display: inline-flex; align-items: center; gap: 8px; font: 800 13px/1 var(--head); letter-spacing: .14em; color: var(--gc); text-transform: uppercase; }
+.feat-kicker::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--gc); box-shadow: 0 0 12px var(--gc); }
+.feat h2 { margin: 12px 0 2px; font: 800 clamp(36px, 4.4vw, 58px)/1 var(--head); color: var(--white); }
+.feat .ko { color: var(--ink-3); font-weight: 700; }
+.feat .lead { color: var(--ink-2); font-size: 17px; margin: 14px 0 16px; }
+.feat .tags { margin-bottom: 22px; }
+.feat-act { display: flex; gap: 10px; flex-wrap: wrap; }
+.feat-act .btn { height: 52px; padding: 0 26px; font-size: 16px; border-radius: 16px; }
+.btn.cta { border: 0; color: var(--white); background: linear-gradient(90deg, var(--cta-1), var(--cta-2)); box-shadow: 0 10px 26px color-mix(in srgb, var(--cta-2) 45%, transparent); }
+.btn.line { background: transparent; color: var(--ink); border: 1.5px solid var(--line-2); }
+.btn.line:hover { border-color: var(--gc); color: var(--white); }
+
+/* 썸네일 줄: 누르면 위 게임이 바뀜 (6초마다 자동) */
+.strip { display: flex; gap: 12px; overflow-x: auto; padding: 6px 2px 14px; margin-bottom: 18px; scrollbar-width: none; }
+.strip::-webkit-scrollbar { display: none; }
+.strip button { --gc: var(--glow-1); flex: none; width: 132px; border-radius: 14px; overflow: hidden; position: relative; opacity: .55; transition: opacity .2s, transform .2s, box-shadow .2s; }
+.strip button img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.strip button.on { opacity: 1; transform: translateY(-3px); box-shadow: 0 0 0 2px var(--gc), 0 10px 22px color-mix(in srgb, var(--gc) 45%, transparent); }
+.strip button:hover { opacity: 1; }
+.strip .bar { position: absolute; left: 0; bottom: 0; height: 3px; width: 0; background: var(--gc); }
+.strip button.on .bar { animation: fill 6s linear forwards; }
+@keyframes fill { to { width: 100%; } }
+@media (max-width: 860px) { .feat { grid-template-columns: 1fr; gap: 18px; } .strip button { width: 104px; } }
+
+.sec-title { display: flex; align-items: baseline; gap: 10px; margin: 8px 0 14px; font: 800 22px/1 var(--head); color: var(--white); }
+.sec-title small { font: 600 13px var(--body); color: var(--ink-3); }
+
+/* chips */
+.chip { background: transparent; border-color: var(--line-2); color: var(--ink-2); }
+.chip.on { background: var(--white); border-color: var(--white); color: var(--bg); }
+
+/* game colours */
+.card, .strip button, .feat { --gc: var(--glow-1); }
+:is(.card, .strip button):has(img[src*="eye-catch"]), .feat[data-g="eye-catch"] { --gc: #a58bff; }
+:is(.card, .strip button):has(img[src*="magic-block"]), .feat[data-g="magic-block"] { --gc: #ff7fb5; }
+:is(.card, .strip button):has(img[src*="phonics-match"]), .feat[data-g="phonics-match"] { --gc: #7be06f; }
+:is(.card, .strip button):has(img[src*="croco"]), .feat[data-g="croco"] { --gc: #3fe0bf; }
+:is(.card, .strip button):has(img[src*="word-mashup"]), .feat[data-g="word-mashup"] { --gc: #5ea0ff; }
+:is(.card, .strip button):has(img[src*="toy-catch"]), .feat[data-g="toy-catch"] { --gc: #ff7a7a; }
+:is(.card, .strip button):has(img[src*="ring-ding-dong"]), .feat[data-g="ring-ding-dong"] { --gc: #ffd23f; }
+:is(.card, .strip button):has(img[src*="puzzle"]), .feat[data-g="puzzle"] { --gc: #ffa04a; }
+:is(.card, .strip button):has(img[src*="phonics-run"]), .feat[data-g="phonics-run"] { --gc: #4cd0ff; }
+
+/* cards: 어두운 진열 카드, 마우스를 올리면 게임 색으로 빛남 */
+.card { background: linear-gradient(180deg, var(--bg-2), var(--card)); box-shadow: inset 0 0 0 1px var(--line-2), 0 10px 30px var(--shadow); }
+.card:hover { transform: translateY(-5px); box-shadow: inset 0 0 0 1.5px var(--gc), 0 0 0 1px var(--gc), 0 18px 44px color-mix(in srgb, var(--gc) 35%, transparent); }
+.shot::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, var(--card)); }
+.shot .num { background: color-mix(in srgb, var(--bg) 70%, transparent); color: var(--gc); box-shadow: inset 0 0 0 1px var(--gc); backdrop-filter: blur(6px); z-index: 1; }
+.card h3 { color: var(--white); }
+.card h3 small { color: var(--ink-3); }
+.tag { background: color-mix(in srgb, var(--white) 8%, transparent); color: var(--ink-2); }
+.tag.t-solo { background: color-mix(in srgb, var(--glow-3) 18%, transparent); color: #9ff0f8; }
+.tag.t-duo { background: color-mix(in srgb, var(--glow-2) 20%, transparent); color: #ffb3d4; }
+.tag.t-speak { background: color-mix(in srgb, var(--cta-1) 20%, transparent); color: #ffc79c; }
+.scope b { color: var(--ink); }
+.st.ok { box-shadow: 0 0 8px var(--ok); }
+.card-actions .btn.primary { border: 0; background: linear-gradient(90deg, var(--cta-1), var(--cta-2)); box-shadow: 0 6px 16px color-mix(in srgb, var(--cta-2) 35%, transparent); }
+.card-actions .btn.teal { background: transparent; border: 1.5px solid var(--line-2); color: var(--ink); box-shadow: none; }
+.card-actions .btn.teal:hover { border-color: var(--gc); }
+
+/* 점검표 · 보완 목록 · TRD도 어둡게 */
+.matrix thead th, .matrix tbody th { background: var(--card); color: var(--ink); }
+.matrix tbody tr:hover th, .matrix tbody tr:hover td { background: var(--bg-2); }
+.reader-side { background: var(--bg-2); }
+
+/* TRD 인쇄 · PDF: 종이에는 밝은 바탕 + 어두운 글자 (launcher.css 원래 토큰) */
+@media print {
+  :root { --bg: #fff8ee; --bg-2: #fdeedd; --card: #ffffff; --ink: #2f2346; --ink-2: #6b5f80; --ink-3: #9a8fae; --line: #efe3d4; --line-2: #e4d4c0; }
+  body { background: var(--white); }
+  .reader-side { background: none; }
+}

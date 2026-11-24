@@ -62,6 +62,38 @@
   });
   cards('all');
 
+  // ── featured: 오늘의 게임 (아케이드 테마, 사용자 2026-11-24) ─────────────────────────────────────────
+  // 큰 그림 + 이름 · 한 줄 소개 · 플레이 / TRD. 6초마다 다음 게임, 아래 썸네일 줄을 누르면 그 게임. 마우스를 올려 두면 멈춤,
+  // 움직임 줄이기 설정이면 자동으로 넘기지 않음.
+  const feat = $('#feat');
+  if (feat) {
+    const calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let cur = 0, timer = 0, hold = false;
+    $('#allN').textContent = `${G.length}개 · TRD ${G.filter(g => g.has_trd).length}/${G.length} · 점검 ${A.updated}`;
+    $('#strip').innerHTML = G.map((g, i) => `<button data-i="${i}" title="${esc(g.title)}"><img src="${esc(g.img)}" alt="${esc(g.title)}"><span class="bar"></span></button>`).join('');
+    const next = () => { clearTimeout(timer); if (!calm && !hold) timer = setTimeout(() => show(cur + 1), 6000); };
+    function show(i) {
+      cur = (i + G.length) % G.length;
+      const g = G[cur], img = $('#fImg');
+      feat.dataset.g = g.id;
+      img.style.animation = 'none'; void img.offsetWidth; img.style.animation = '';
+      img.src = g.img; img.alt = g.title;
+      $('#fTitle').textContent = g.title; $('#fKo').textContent = g.title_ko; $('#fLead').textContent = g.tagline || '';
+      $('#fTags').innerHTML = [g.players, g.skill && g.skill.split(/[(—+,]/)[0].trim()].filter(Boolean).map(t => `<span class="tag">${esc(t)}</span>`).join('');
+      $('#fPlay').href = g.url;
+      $('#fTrd').disabled = !g.has_trd;
+      document.querySelectorAll('#strip button').forEach((b, k) => b.classList.toggle('on', k === cur));
+      next();
+    }
+    $('#strip').addEventListener('click', e => { const b = e.target.closest('button'); if (b) show(+b.dataset.i); });
+    $('#fTrd').addEventListener('click', () => openTrd(G[cur].id));
+    [feat, $('#strip')].forEach(el => {
+      el.addEventListener('mouseenter', () => { hold = true; clearTimeout(timer); document.querySelectorAll('#strip .bar').forEach(b => b.style.animationPlayState = 'paused'); });
+      el.addEventListener('mouseleave', () => { hold = false; document.querySelectorAll('#strip .bar').forEach(b => b.style.animationPlayState = ''); next(); });
+    });
+    show(0);
+  }
+
   // ── TRD reader ───────────────────────────────────────────────────────────────────────────────────
   function openTrd(id) {
     const g = byId[id]; if (!g) return;

@@ -10,6 +10,7 @@
 | `img/<id>.webp` | 카드용 타이틀 화면 ← `uv run --with playwright==1.62.0 --with pillow python tools/shots.py [id …]` |
 | `js/data.js` | 생성물 ← `uv run --with markdown python tools/build.py` (TRD·점검표를 고친 뒤 실행) |
 | `js/launcher.js`, `css/launcher.css` | 화면 |
+| `css/arcade.css` | 아케이드 나이트 테마(2026-11-24, 시안 3개 중 B): 어두운 무대 · '오늘의 게임'(6초마다 넘김, 썸네일 줄) · 게임별 색 `--gc`. 인쇄는 밝게 |
 
 - TRD는 인쇄·PDF 버튼으로 A4 가로 출력.
 - 보완 목록에서 고른 항목은 이 브라우저에만 기억되고, "고른 항목 복사"로 채팅에 붙여 넣는다.

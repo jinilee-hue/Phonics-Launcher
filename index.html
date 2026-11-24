@@ -6,6 +6,7 @@
 <title>Phonics Games</title>
 <link rel="stylesheet" href="css/font.css">
 <link rel="stylesheet" href="css/launcher.css">
+<link rel="stylesheet" href="css/arcade.css">
 </head>
 <body>
 <header class="top">
@@ -23,6 +24,19 @@
 <main>
   <!-- games -->
   <section class="panel on" id="p-games">
+    <!-- featured: 오늘의 게임 + 썸네일 줄 (js/launcher.js featured) -->
+    <section class="feat" id="feat">
+      <div class="feat-img"><img id="fImg" alt=""></div>
+      <div class="feat-info">
+        <span class="feat-kicker">오늘의 게임</span>
+        <h2 id="fTitle"></h2><span class="ko" id="fKo"></span>
+        <p class="lead" id="fLead"></p>
+        <div class="tags" id="fTags"></div>
+        <div class="feat-act"><a class="btn cta" id="fPlay" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10-6.5z"/></svg>플레이</a><button class="btn line" id="fTrd"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>TRD 보기</button></div>
+      </div>
+    </section>
+    <div class="strip" id="strip"></div>
+    <h3 class="sec-title">모든 게임 <small id="allN"></small></h3>
     <div class="chips" id="filters">
       <button class="chip on" data-f="all">전체</button>
       <button class="chip" data-f="solo">1인</button>
