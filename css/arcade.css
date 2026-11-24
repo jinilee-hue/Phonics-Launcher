@@ -28,42 +28,16 @@ body { background:
   background-attachment: fixed; }
 .top { background: color-mix(in srgb, var(--bg) 70%, transparent); border-bottom: 1px solid var(--line); }
 h1 { color: var(--white); }
-/* brand mark = four real 3D cubes (user 2026-11-24: "납작한 네모 말고 입체감 있는 4모 정사각형 박스 형태로"): each <i> is a cube
-   of five <b> faces (front, right, back, left, top — the bottom never shows) in CSS 3D, seen a little from above and to the
-   side, edges closed (rounded face corners left see-through notches at the edges). Face shades are fixed per face (top lightest, sides darker) so the edges read as a box.
-   They turn one after another ("4개박스가 시간차를 두고 돌아가는 인터렉션"): every 4.8 s each cube hops, spins a full turn
-   about its upright axis and lands with a little squash — clockwise from the top left, 0.18 s apart. Pointing at the title
-   spins them at once. Reduced motion: still. */
-.mark { --s: 14px; transform: none; grid-template-columns: repeat(2, var(--s)); gap: 9px 9px; padding: 3px 2px 0; perspective: 220px;
-  filter: drop-shadow(0 4px 3px rgba(0, 0, 0, .5)); }
-.mark i { --c: var(--orange); --tilt: rotateX(-26deg) rotateY(-34deg); position: relative; width: var(--s); height: var(--s);
-  background: none; border-radius: 0; transform-style: preserve-3d; transform: var(--tilt);
-  animation: cube-spin 4.8s cubic-bezier(.4, 0, .2, 1) infinite; }
-.mark i b { position: absolute; inset: 0; border-radius: 1.5px; backface-visibility: hidden; box-shadow: inset 0 0 0 .6px rgba(255, 255, 255, .22);
-  background: linear-gradient(180deg, color-mix(in srgb, var(--c) 72%, var(--white)), var(--c) 70%); }
-.mark i b:nth-child(1) { transform: translateZ(calc(var(--s) / 2)); }
-.mark i b:nth-child(2) { transform: rotateY(90deg) translateZ(calc(var(--s) / 2)); filter: brightness(.78); }
-.mark i b:nth-child(3) { transform: rotateY(180deg) translateZ(calc(var(--s) / 2)); filter: brightness(.66); }
-.mark i b:nth-child(4) { transform: rotateY(-90deg) translateZ(calc(var(--s) / 2)); filter: brightness(.9); }
-.mark i b:nth-child(5) { transform: rotateX(90deg) translateZ(calc(var(--s) / 2));
-  background: radial-gradient(60% 50% at 38% 35%, rgba(255, 255, 255, .7), transparent 70%), color-mix(in srgb, var(--c) 55%, var(--white)); }
-.mark i b:nth-child(1)::after { content: ''; position: absolute; left: 2px; top: 2px; width: 5px; height: 3px; border-radius: 50%; background: rgba(255, 255, 255, .7); }
-.mark i:nth-child(1) { --c: var(--orange); } .mark i:nth-child(2) { --c: var(--teal); }
-.mark i:nth-child(3) { --c: var(--pink); } .mark i:nth-child(4) { --c: var(--gold); }
-.mark i:nth-child(2) { animation-delay: .18s; } .mark i:nth-child(4) { animation-delay: .36s; } .mark i:nth-child(3) { animation-delay: .54s; }
-@keyframes cube-spin {
-  0%, 62% { transform: var(--tilt); }
-  70% { transform: translateY(-5px) rotateX(-26deg) rotateY(76deg); }
-  80% { transform: translateY(-6px) rotateX(-26deg) rotateY(216deg); }
-  88% { transform: translateY(0) rotateX(-26deg) rotateY(326deg) scale3d(1.1, .88, 1.1); }
-  94% { transform: translateY(-1px) rotateX(-26deg) rotateY(326deg) scale3d(.96, 1.04, .96); }
-  100% { transform: rotateX(-26deg) rotateY(326deg); }
-}
-.brand:hover .mark i { animation: cube-hop .8s cubic-bezier(.4, 0, .2, 1); }
-.brand:hover .mark i:nth-child(2) { animation-delay: .07s; } .brand:hover .mark i:nth-child(4) { animation-delay: .14s; } .brand:hover .mark i:nth-child(3) { animation-delay: .21s; }
-@keyframes cube-hop { 0% { transform: var(--tilt); } 40% { transform: translateY(-6px) rotateX(-26deg) rotateY(166deg); }
-  75% { transform: rotateX(-26deg) rotateY(326deg) scale3d(1.1, .88, 1.1); } 100% { transform: rotateX(-26deg) rotateY(326deg); } }
-@media (prefers-reduced-motion: reduce) { .mark i, .brand:hover .mark i { animation: none; } }
+/* brand mark = four candy cubes as rounded dice (user 2026-11-24: "박스 면 사이에 검은색 라인처럼 깨져보이지 않고 이어짐이
+   부드럽게", "모서리가 주사위처럼 조금 둥글었으면"). The CSS 3D faces left dark seams at the edges, so the dice are pre-rendered
+   in three.js (tools/mark_sprite.py → img/mark-cubes.webp: rows orange, teal, pink, gold × 18 frames of a quarter turn);
+   js/mark.js sets each cube's frame (--k) and its hop / squash (the same motion as the CSS 3D version). */
+.mark { --f: 28px; transform: none; grid-template-columns: repeat(2, 20px); gap: 3px; padding: 2px 0 0; filter: drop-shadow(0 4px 3px rgba(0, 0, 0, .45)); }
+.mark i, .mark i:nth-child(n) { --row: 0; position: relative; width: 20px; height: 20px; background: none; border-radius: 0; transform-origin: 50% 85%; }
+.mark i::before { content: ''; position: absolute; left: -4px; top: -4px; width: var(--f); height: var(--f);
+  background: url(../img/mark-cubes.webp) no-repeat; background-size: calc(var(--f) * 18) calc(var(--f) * 4);
+  background-position: calc(var(--k, 0) * var(--f) * -1) calc(var(--row) * var(--f) * -1); }
+.mark i:nth-child(2) { --row: 1; } .mark i:nth-child(3) { --row: 2; } .mark i:nth-child(4) { --row: 3; }
 .tabs { background: var(--bg-2); box-shadow: inset 0 0 0 1px var(--line-2); }
 .tab { color: var(--ink-2); }
 .tab.on { background: linear-gradient(90deg, var(--cta-1), var(--cta-2)); color: var(--white); box-shadow: 0 6px 18px color-mix(in srgb, var(--cta-2) 45%, transparent); }
