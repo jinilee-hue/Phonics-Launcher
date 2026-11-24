@@ -60,7 +60,7 @@ updated: 2026-11-22
   - 눈은 깜빡이고 끄는 조각을 따라본다.
   - 입은 음성 크기를 따라 벌어진다.
   - 표정 6가지(smile, happy, wow, wink, cheeky, oops)가 대사마다 바뀐다.
-- 튜터 대사: 영/한 15쌍. phonics-api TTS 통합 튜터 목소리(Ava Multilingual을 aiden 높이·빠르기로 조정)로 만들었고, 30개 모두 whisper 되읽기 검사를 통과했다.
+- 튜터 대사: 영/한 18쌍, 아이에게 말하듯 다듬음(2026-11-24: 실패 뒤 "잘했어" 없음, "이번엔 직접 해 봐"). phonics-api TTS 통합 튜터 목소리(Ava Multilingual을 aiden 높이·빠르기로 조정)로 만들었고, 36개 모두 whisper 되읽기 검사를 통과했다.
 - 단어와 /m/ 소리는 레슨팩 공식 녹음이다.
 - 발음 판정:
   - 키가 있으면 phonics-api `/v1/speech/analyze`로 들린 소리열을 받고, kit의 `PhonicsAPI.judge`로 18단어 기대 소리열과 비교한다.
