@@ -28,6 +28,34 @@ body { background:
   background-attachment: fixed; }
 .top { background: color-mix(in srgb, var(--bg) 70%, transparent); border-bottom: 1px solid var(--line); }
 h1 { color: var(--white); }
+/* brand mark = four 3D candy blocks (user 2026-11-24 "4개 박스 심볼을 3d 입체감 있는 둥근 정사각형 박스로"): each a rounded
+   square with a lit top, a deeper edge under it, a gloss spot and a soft drop — the games' candy buttons in small */
+.mark { gap: 7px 4px; grid-template-columns: repeat(2, 16px); }
+.mark i { --c: var(--orange); position: relative; width: 16px; height: 16px; border-radius: 5px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--c) 55%, var(--white)), var(--c) 55%, color-mix(in srgb, var(--c) 82%, black));
+  box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, .6), inset 0 -1.5px 0 rgba(0, 0, 0, .18), 0 3px 0 color-mix(in srgb, var(--c) 55%, black),
+    0 5px 8px rgba(0, 0, 0, .45); }
+.mark i::after { content: ''; position: absolute; left: 3px; top: 2.5px; width: 6px; height: 3.5px; border-radius: 50%; background: rgba(255, 255, 255, .75); filter: blur(.4px); }
+.mark i:nth-child(1) { --c: var(--orange); } .mark i:nth-child(2) { --c: var(--teal); }
+.mark i:nth-child(3) { --c: var(--pink); } .mark i:nth-child(4) { --c: var(--gold); }
+/* …that turn one after another (user 2026-11-24 "4개박스가 시간차를 두고 돌아가는 인터렉션"): every 4.8 s each block hops,
+   spins a full turn about its upright axis and lands with a little squash — clockwise from the top left, 0.18 s apart.
+   Pointing at the title spins them at once. Reduced motion: still. */
+.mark { perspective: 160px; }
+.mark i { animation: mark-spin 4.8s cubic-bezier(.4, 0, .2, 1) infinite; }
+.mark i:nth-child(2) { animation-delay: .18s; } .mark i:nth-child(4) { animation-delay: .36s; } .mark i:nth-child(3) { animation-delay: .54s; }
+@keyframes mark-spin {
+  0%, 62% { transform: none; }
+  70% { transform: translateY(-4px) rotateY(110deg); }
+  80% { transform: translateY(-5px) rotateY(250deg); }
+  88% { transform: translateY(0) rotateY(360deg) scale(1.1, .88); }
+  94% { transform: translateY(-1px) rotateY(360deg) scale(.96, 1.04); }
+  100% { transform: rotateY(360deg); }
+}
+.brand:hover .mark i { animation: mark-hop .7s cubic-bezier(.4, 0, .2, 1); }
+.brand:hover .mark i:nth-child(2) { animation-delay: .07s; } .brand:hover .mark i:nth-child(4) { animation-delay: .14s; } .brand:hover .mark i:nth-child(3) { animation-delay: .21s; }
+@keyframes mark-hop { 0% { transform: none; } 40% { transform: translateY(-5px) rotateY(200deg); } 75% { transform: rotateY(360deg) scale(1.1, .88); } 100% { transform: rotateY(360deg); } }
+@media (prefers-reduced-motion: reduce) { .mark i, .brand:hover .mark i { animation: none; } }
 .tabs { background: var(--bg-2); box-shadow: inset 0 0 0 1px var(--line-2); }
 .tab { color: var(--ink-2); }
 .tab.on { background: linear-gradient(90deg, var(--cta-1), var(--cta-2)); color: var(--white); box-shadow: 0 6px 18px color-mix(in srgb, var(--cta-2) 45%, transparent); }
@@ -84,8 +112,10 @@ h1 { color: var(--white); }
 :is(.card, .strip button):has(img[src*="phonics-run"]), .feat[data-g="phonics-run"] { --gc: #4cd0ff; }
 
 /* cards: 어두운 진열 카드, 마우스를 올리면 게임 색으로 빛남 */
-.card { background: linear-gradient(180deg, var(--bg-2), var(--card)); box-shadow: inset 0 0 0 1px var(--line-2), 0 10px 30px var(--shadow); }
-.card:hover { transform: translateY(-5px); box-shadow: inset 0 0 0 1.5px var(--gc), 0 0 0 1px var(--gc), 0 18px 44px color-mix(in srgb, var(--gc) 35%, transparent); }
+/* the frame is drawn OUTSIDE the card (an inset line was hidden under the picture, so the frame looked thinner at the top
+   than at the sides — user 2026-11-24 "마우스 호버시 선 두께가 다른데"): the same 1 px / 2 px all the way round */
+.card { background: linear-gradient(180deg, var(--bg-2), var(--card)); box-shadow: 0 0 0 1px var(--line-2), 0 10px 30px var(--shadow); }
+.card:hover { transform: translateY(-5px); box-shadow: 0 0 0 2px var(--gc), 0 18px 44px color-mix(in srgb, var(--gc) 35%, transparent); }
 .shot::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, var(--card)); }
 .shot .num { background: color-mix(in srgb, var(--bg) 70%, transparent); color: var(--gc); box-shadow: inset 0 0 0 1px var(--gc); backdrop-filter: blur(6px); z-index: 1; }
 .card h3 { color: var(--white); }
