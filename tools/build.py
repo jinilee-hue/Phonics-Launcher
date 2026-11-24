@@ -6,7 +6,9 @@ import json, pathlib, re
 import markdown
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-ORDER = ['eye-catch', 'magic-block', 'phonics-match', 'croco', 'word-mashup', 'toy-catch', 'ring-ding-dong', 'puzzle', 'phonics-run']
+ORDER = ['phonics-run', 'puzzle', 'eye-catch', 'toy-catch', 'croco', 'phonics-match', 'magic-block', 'ring-ding-dong', 'word-mashup']
+# newest game first (user 2026-11-24 "최근에 만든게 제일 리스트 위로 오게"): a new game goes at the FRONT of ORDER and of
+# audit.json "games". Cards are numbered 01… in this order, and the featured strip starts with the first one.
 FALLBACK = {   # used until a game's TRD exists
     'eye-catch': ('Eye Catch', '아이캐치', 'https://jinilee-hue.github.io/Eye-Catch/'),
     'magic-block': ('Magic Block', '매직 블록', 'https://jinilee-hue.github.io/Magic-Block/'),

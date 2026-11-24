@@ -1,15 +1,15 @@
 {
   "updated": "2026-11-23",
   "games": [
-    "eye-catch",
-    "magic-block",
-    "phonics-match",
-    "croco",
-    "word-mashup",
-    "toy-catch",
-    "ring-ding-dong",
+    "phonics-run",
     "puzzle",
-    "phonics-run"
+    "eye-catch",
+    "toy-catch",
+    "croco",
+    "phonics-match",
+    "magic-block",
+    "ring-ding-dong",
+    "word-mashup"
   ],
   "criteria": [
     {
@@ -623,8 +623,8 @@
       "title": "2인 전용 게임에 혼자 하기 추가",
       "games": [
         "eye-catch",
-        "magic-block",
-        "croco"
+        "croco",
+        "magic-block"
       ],
       "why": "혼자 있는 아이는 할 수 없다. 튜터나 Coco 같은 컴퓨터 상대, 또는 연습 모드를 둔다."
     },
@@ -664,15 +664,15 @@
       "pri": "중간",
       "title": "교사용 기록 화면",
       "games": [
-        "eye-catch",
-        "magic-block",
-        "phonics-match",
-        "croco",
-        "word-mashup",
-        "toy-catch",
-        "ring-ding-dong",
+        "phonics-run",
         "puzzle",
-        "phonics-run"
+        "eye-catch",
+        "toy-catch",
+        "croco",
+        "phonics-match",
+        "magic-block",
+        "ring-ding-dong",
+        "word-mashup"
       ],
       "why": "단어별 정답률·아이별 진도를 볼 곳이 없다. F1 공통 저장이 생기면 런처에 교사 보기를 붙일 수 있다."
     },
@@ -681,8 +681,8 @@
       "pri": "낮음",
       "title": "타이틀 나가기 동작 통일",
       "games": [
-        "phonics-match",
-        "toy-catch"
+        "toy-catch",
+        "phonics-match"
       ],
       "why": "새 탭에서 열면 나가기를 눌러도 반응이 없다. Croco처럼 창 닫기 → 새로고침으로 맞춘다."
     },
