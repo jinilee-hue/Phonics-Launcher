@@ -9,7 +9,7 @@ scope: FPR K U1L1 Mm · 레슨팩 m 단어 18개 + 다른 소리 그림 9개(함
 stack: Vanilla JS ES 모듈(빌드 없음) + three.js r180
 repo: https://github.com/jinilee-hue/Phonics-Run
 url: https://jinilee-hue.github.io/Phonics-Run/
-updated: 2026-11-23
+updated: 2026-11-24
 ---
 
 # Phonics Run TRD
@@ -55,7 +55,7 @@ updated: 2026-11-23
 - 발음 판정: phonics-api analyze + 공통 judge(서버 판정이 최종), 서버를 못 쓰면 기기 안 whisper tiny.en(`stt/`, 음성이 기기 밖으로 안 나감). 판정할 수 없으면 말하기를 건너뛰고 코인 없음. API 키 값은 코드에 없다(기기에서 한 번 입력).
 
 ## 7. 화면·UI 요구사항
-- 화면 그래픽은 모두 3D 스타일: 하트·코인·별·장갑 손·자물쇠·상점 아이템은 three.js 렌더(`js/icons3d.js`), 알약·버튼·카드·리본·로고는 두께·광택.
+- 화면 그래픽은 모두 3D 스타일: 하트·코인·별·장갑 손·자물쇠·상점 아이템은 three.js 렌더(`js/icons3d.js`), 알약·버튼·카드·리본·로고는 두께·광택. 둥근 버튼(상단 바·방향·점프·말하기·결과)은 모두 스피커·나가기와 같은 캔디 버튼(색만 다름), 면 높이 = 너비×0.92 + 얇은 아래 테두리라 겉으로 동그랗게 보인다.
 - 16:9 기준, 단위 u = min(1vh, 100vw/177.78). 상단 바 버튼 7.6u, 가장자리 3u(Toy Catch 기준). 언어 토글은 타이틀에만, 처음 한국어, 튜터 음성만 바뀜(화면 글자 영어).
 - 터치: 왼쪽 아래 스틱(24u), 오른쪽 아래 점프(16u). 말하기 중에는 숨김. 키보드 방향키/WASD 이동, Space/Z 점프.
 - 예외: 마이크 거부·없음 → 말하기 없이 게이트가 열림(코인 없음). 오프라인 → 기기 안 인식.
@@ -69,7 +69,7 @@ updated: 2026-11-23
 | `js/level.js` | 코스 데이터와 생성, 리프트 |
 | `js/items.js` | 그림 카드·m 코인 |
 | `js/tata.js` | Tata 모델·애니메이션·꾸미기 |
-| `js/audio.js` | 음성·효과음·배경음악(더킹) |
+| `js/audio.js` | 음성·효과음·배경음악(맵별 2곡, 맵이 바뀌면 이어서 교체, 더킹) |
 | `js/phonics-api.js`, `js/mic.js`, `js/stt.js`, `js/stt-worker.js`, `stt/` | 발음 판정(공통 kit 사본) |
 - 실행: `python3 -m http.server 5185` → http://127.0.0.1:5185/ (ES 모듈이라 file:// 불가). 배포: GitHub Pages(빌드 없음).
 
@@ -77,7 +77,7 @@ updated: 2026-11-23
 | 스크립트 | 만드는 것 | 실행 |
 |---|---|---|
 | `tools/build_voice.py` | 단어·/m/·튜터 대사 → `assets/voice`, `js/voice.js` | `uv run --with numpy python tools/build_voice.py` |
-| `tools/make_bgm.py` | 배경음악(블루그래스 호다운, G 160BPM, 24초) → `assets/audio/bgm.mp3` | `uv run --with numpy --with scipy --with pyloudnorm python tools/make_bgm.py` |
+| `tools/make_bgm.py` | 배경음악 2곡, 같은 멜로디 — 팝록 G 140BPM 27초(숲·눈·우주) → `assets/audio/bgm-rock.mp3`, 댄스팝 A♭ 132BPM 29초(사탕·사막) → `bgm-dance.mp3` | `uv run --with numpy --with scipy --with pyloudnorm python tools/make_bgm.py` |
 | `tools/tata_cmp.py` 외 | Tata 시트 대비 렌더 비교 | `uv run --with playwright --with pillow python tools/tata_cmp.py` |
 
 ## 10. 저장 데이터
