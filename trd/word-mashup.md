@@ -9,7 +9,7 @@ scope: 문법 · 합성어 43쌍(단어 단위 — 낱자-소리 파닉스 아�
 stack: Vite + TypeScript + Phaser 3 + three.js
 repo: https://github.com/jinilee-hue/phonics-wordmashup-3D
 url: https://jinilee-hue.github.io/phonics-wordmashup-3D/
-updated: 2026-11-22
+updated: 2026-11-26
 ---
 
 # Word Mashup 3D TRD
@@ -102,6 +102,7 @@ updated: 2026-11-22
 - 터치: 하단 버튼 162×58(디자인 px), 배지 `+`는 4:3에서 약 36 px(추정 계산). 카드는 거리 기반으로 잡는다.
 - 예외 상태: 마이크 거부 → 글리는 듣지 않고 터치로 진행, Mic 버튼은 안내 없이 꺼짐. 오프라인 → 기기 안 whisper로. 느린 기기 → 품질 high → mid → low → 2D 자동 하향(`gl/index.ts`), 2D에는 글리 없음.
 - URL 옵션: `?q=high|mid|low|2d`, `?glee=off`, `?tutor=off`, `?fps`, `?debug` 등(`README-3D.md`).
+- 휴대폰 가로(높이 500px 이하 터치 화면, 2026-11-26): 캔버스 UI도 휴대폰 전용으로 확대(`src/phone.ts`): 상단 줄 약 41px(통화 배지 전체가 정보 열기), 아래 버튼 42px, 설정 42px, 단어책 6×2 카드·✕ 40px·화살표 44px, 마지막 책 Next Play 42px, JUMP 52px 이상, 글자 12px 이상(그림 속 단어 제외). 휴대폰을 세로로 들면 "Turn your phone sideways" 안내 화면. 태블릿·PC 화면은 그대로(모든 규칙이 휴대폰 조건 안).
 
 ## 8. 기술 구성
 - 스택: Vite 8 + TypeScript 5 + Phaser 3.88 + three.js 0.180. 폰트 Baloo 2·Noto Sans KR(Google Fonts). 개발용 playwright.

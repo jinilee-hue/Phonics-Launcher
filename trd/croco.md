@@ -9,7 +9,7 @@ scope: FPR K Lesson 1–10 · 레벨 1 = 레슨팩 FP.K.U1L1 m단어 18개, 레�
 stack: Vanilla JS + three.js r186(IIFE, 빌드 없음)
 repo: https://github.com/jinilee-hue/Croco-Phonics
 url: https://jinilee-hue.github.io/Croco-Phonics/
-updated: 2026-11-22
+updated: 2026-11-26
 ---
 
 # Croco Phonics TRD
@@ -93,6 +93,7 @@ updated: 2026-11-22
 - 버튼 크기: 상단 버튼은 UI 표준(7.6tu, 가장자리 3tu, 가로 화면) — 1024×768에서 44 px, 가장자리 17 px(Toy-Catch와 같은 자리). 이빨은 3D 레이캐스트로 고르고, 이빨 뒤에 더 큰 투명 판정 영역이 있다(`js/stage.js:114`).
 - 하단 양쪽 구석: 플레이어 아바타 + 카드 더미 + 승리 칩. 결과 버튼은 세로 화면에서 위아래로 쌓인다.
 - 예외 상태: 마이크 거부 → 탭 진행. 오프라인 → 소리 감지만. 첫 터치 전 소리 잠김 → 말풍선만 띄우고, 첫 터치에 지금 줄부터 소리 낸다.
+- 휴대폰 가로(높이 500px 이하 터치 화면, 2026-11-26): 상단 43px, START 163×53, Skip 78×42, 듣기 40px(단어 카드 오른쪽 옆), JUMP·마이크 52px, Play Again·Next Level 53px, 글자 12.5px. 첫 화면 악어를 조금 줄이고 올려 START가 앞니 글자를 가리지 않음. 이빨(3D)은 24~42px로 남음(키우면 화면에 안 들어감). 휴대폰을 세로로 들면 "Turn your phone sideways" 안내 화면. 태블릿·PC 화면은 그대로(모든 규칙이 휴대폰 조건 안).
 
 ## 8. 기술 구성
 - 스택: Vanilla HTML/CSS/JS, 빌드 없음. three.js r186 IIFE(`vendor/three.iife.js`). 글꼴 Baloo 2(`css/font.css`에 데이터 URL), Jua 부분 글꼴(`css/font-ko.css`). `file://`로 열어도 동작한다(음성·글꼴 내장).

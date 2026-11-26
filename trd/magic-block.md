@@ -9,7 +9,7 @@ scope: FPR K U1L1 Mm · 레슨팩 m단어 18개 + m 없는 단어 26개(레슨�
 stack: Vite + TypeScript + three.js + cannon-es (기기 안 인식 transformers.js whisper-tiny.en)
 repo: https://github.com/jinilee-hue/Magic-Block
 url: https://jinilee-hue.github.io/Magic-Block/
-updated: 2026-11-22
+updated: 2026-11-26
 ---
 
 # Magic Block TRD
@@ -127,6 +127,7 @@ updated: 2026-11-22
   - 마이크 거부·미지원·권한 창 15초 무응답: 판정을 못 하므로 블럭 없이 넘어간다. "I said it" 버튼은 JUMP와 겹쳐 없앴다(2026-11-22).
   - 오프라인·키 없음: whisper가 판정한다. 모델 55MB가 `public/stt`에 들어 있다.
   - whisper 로딩 중·오류: 목소리만 들려도 통과한다(`game.ts:400,402`).
+- 휴대폰 가로(높이 500px 이하 터치 화면, 2026-11-26): 코너 버튼 44px, START 130×63, 고르기·상점·결과 버튼 43px(글자 12px, 고르기 판은 아래쪽), SKIP 44px, 되돌리기 46px, 듣기·점프 52px, 마이크 60px, 결과 책 단어 약 12px. 플레이어 카드 옆 단어 칩은 7px로 남음(키우면 화면보다 높아짐). 휴대폰을 세로로 들면 "Turn your phone sideways" 안내 화면. 태블릿·PC 화면은 그대로(모든 규칙이 휴대폰 조건 안).
 
 ## 8. 기술 구성
 - **스택**: Vite 7, TypeScript 5.9, three 0.186(탑·조명·그림자), cannon-es 0.20(붕괴 물리), @huggingface/transformers 4.3(whisper)

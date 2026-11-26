@@ -9,7 +9,7 @@ scope: FPR K U1L1 Mm · 레슨팩 m 단어 18개 + 다른 소리 그림 9개(함
 stack: Vanilla JS ES 모듈(빌드 없음) + three.js r180
 repo: https://github.com/jinilee-hue/Phonics-Run
 url: https://jinilee-hue.github.io/Phonics-Run/
-updated: 2026-11-24
+updated: 2026-11-26
 ---
 
 # Phonics Run TRD
@@ -59,6 +59,7 @@ updated: 2026-11-24
 - 16:9 기준, 단위 u = min(1vh, 100vw/177.78). 상단 바 버튼 7.6u, 가장자리 3u(Toy Catch 기준). 언어 토글은 타이틀에만, 처음 한국어, 튜터 음성만 바뀜(화면 글자 영어).
 - 터치: 왼쪽 아래 스틱(24u), 오른쪽 아래 점프(16u). 말하기 중에는 숨김. 키보드 방향키/WASD 이동, Space/Z 점프.
 - 예외: 마이크 거부·없음 → 말하기 없이 게이트가 열림(코인 없음). 오프라인 → 기기 안 인식.
+- 휴대폰 가로(높이 500px 이하 터치 화면, 2026-11-26): 상단 바·언어 토글·지갑 44px(노치 피함), SKIP 81×44, ←→ 56px·점프 60px, 말하기 듣기·JUMP 44px·마이크 57px, START 61px, 상점 ✕ 46px. 휴대폰을 세로로 들면 "Turn your phone sideways" 안내 화면. 태블릿·PC 화면은 그대로(모든 규칙이 휴대폰 조건 안).
 
 ## 8. 기술 구성
 | 파일 | 역할 |

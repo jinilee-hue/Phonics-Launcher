@@ -9,7 +9,7 @@ scope: FPR K U1L1 Mm · 레슨팩 FP.K.U1L1 m단어 18개
 stack: Vanilla JS + three.js r186 (빌드 없음)
 repo: https://github.com/jinilee-hue/Eye-Catch
 url: https://jinilee-hue.github.io/Eye-Catch/
-updated: 2026-11-22
+updated: 2026-11-26
 ---
 
 # Eye Catch TRD
@@ -94,6 +94,7 @@ updated: 2026-11-22
   - 마이크 거부·없음·file://: 버튼을 누르면 정답만 보여 주고 아무도 카드를 갖지 않는다(2026-11-22).
   - 오프라인·키 없음·서버 혼잡: 기기 안 whisper로 판정한다.
   - 말이 없을 때: "Say it!", 알아듣지 못했을 때: "One more time!"으로 한 번 더 기회를 주고, 그다음은 오답이다(`game.js:346-371`).
+- 휴대폰 가로(높이 500px 이하 터치 화면, 2026-11-26): 게임 화면 세로 스크롤 제거(장갑 소매가 아래로 넘침), 코너 버튼·CHARACTERS ✕·SKIP 44px, 플레이어 이름 12.5px, JUMP 44px, 단어 카드 스피커 42px, 결과 버튼 44px. 휴대폰을 세로로 들면 "Turn your phone sideways" 안내 화면. 태블릿·PC 화면은 그대로(모든 규칙이 휴대폰 조건 안).
 
 ## 8. 기술 구성
 - 스택: Vanilla HTML/CSS/JS, 빌드 없음. 외부 라이브러리는 three.js r186(`vendor/three.iife.js`)과 ONNX Runtime WASM + whisper tiny.en(`stt/`, Phonics Match 워커 재사용)이다.

@@ -9,7 +9,7 @@ scope: FPR K 전체(Unit 1–6 첫소리) · 동물·사물·과일 3주제, 교
 stack: Vite + TypeScript (DOM·CSS·Canvas 2D, 기기 안 인식 transformers.js whisper-tiny.en)
 repo: https://github.com/jinilee-hue/Phonics-Match
 url: https://jinilee-hue.github.io/Phonics-Match/
-updated: 2026-11-22
+updated: 2026-11-26
 ---
 
 # Phonics Match TRD
@@ -152,6 +152,7 @@ updated: 2026-11-22
   - 오프라인·키 없음: whisper가 판정한다(모델 55MB가 `public/stt`에 들어 있음).
   - 이동 처리 중이거나 말하기 카드가 떠 있을 때 드레스업을 누르면 막히고 버튼이 흔들린다.
 - `prefers-reduced-motion`에 대응한다.
+- 휴대폰 가로(높이 500px 이하 터치 화면, 2026-11-26): 상단 42px, PLAY·테마 Play·마이크·결과 버튼 52px, ✕·SKIP 44px, 왼쪽 정보 열 확대. 말하기 마이크는 말풍선 옆(판을 가리지 않음), 첫 화면에서 도는 글자는 PLAY에 닿기 전에 사라짐. 예전 회전 안내(.rotate-old)는 태블릿·PC용으로 유지. 휴대폰을 세로로 들면 "Turn your phone sideways" 안내 화면. 태블릿·PC 화면은 그대로(모든 규칙이 휴대폰 조건 안).
 
 ## 8. 기술 구성
 - **스택**: Vite 7, TypeScript 5.9, @huggingface/transformers 4.3(whisper). 게임 엔진 없이 DOM, CSS, WAAPI, Canvas 2D(이펙트)로 만들었다. 3D 튜터는 `public/t3d`(three.js) iframe 복사본이다.

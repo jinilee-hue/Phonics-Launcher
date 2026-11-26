@@ -9,7 +9,7 @@ scope: FPR K U1L1 Mm · 레슨팩 m 단어 18개
 stack: Vanilla JS (빌드 없음) + three.js(파티클 굽기용)
 repo: https://github.com/jinilee-hue/Phonics-Puzzle
 url: https://jinilee-hue.github.io/Phonics-Puzzle/
-updated: 2026-11-22
+updated: 2026-11-26
 ---
 
 # Phonics Puzzle TRD
@@ -79,6 +79,7 @@ updated: 2026-11-22
   - 마이크 권한 창에 응답이 없으면 15초 뒤 진행한다.
   - 마이크를 거부하면 단어 말하기 없이 다음 버튼만 나온다.
   - `file://`로 열면 whisper를 쓸 수 없다.
+- 휴대폰 가로(높이 500px 이하 터치 화면, 2026-11-26): 코너 버튼·조각 화살표·단어 줄 듣기·JUMP 44px, 마이크 54px, SKIP은 화면 모서리, LEVEL·PIECES 12px 이상, 결과 버튼 44px. 스티커북은 카드 폭을 줄여 ✕가 언어 토글과 겹치지 않음(이름 12px), 꾸미기 스티커 48px. 휴대폰을 세로로 들면 "Turn your phone sideways" 안내 화면. 태블릿·PC 화면은 그대로(모든 규칙이 휴대폰 조건 안).
 
 ## 8. 기술 구성
 | 파일 | 역할 |

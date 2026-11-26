@@ -9,7 +9,7 @@ scope: 문법 NP-01 규칙 복수 -s(Essential Grammar) · 지금은 5세 K만, 
 stack: Vanilla JS + three.js r186 (WebGL, 빌드 없음)
 repo: https://github.com/jinilee-hue/Phonics-Halli-Galli-3D
 url: https://jinilee-hue.github.io/Phonics-Halli-Galli-3D/
-updated: 2026-11-22
+updated: 2026-11-26
 ---
 
 # Ring Ding Dong TRD
@@ -101,6 +101,7 @@ updated: 2026-11-22
   - file://: 그림을 data URL로 넣어 뒀다. 2단계 이상이면 `gl/card-tex.js`(약 5.5MB)를 불러온다.
   - 오프라인: 모든 에셋이 로컬이라 동작한다(추정).
   - 마이크: 사용하지 않음.
+- 휴대폰 가로(높이 500px 이하 터치 화면, 2026-11-26): 상단 바·토글 44px, START 130×62, 볼륨 40×116, SKIP·다시 듣기 44px, MY BELLS ✕ 42px, 글자 12px 이상(Coco 말풍선 13px). 휴대폰 첫 화면에서 MY BELLS 버튼은 왼쪽 위로(커진 버튼이 로고와 겹쳐서). `gl/phone.css`, sync 스크립트가 링크를 유지. 휴대폰을 세로로 들면 "Turn your phone sideways" 안내 화면. 태블릿·PC 화면은 그대로(모든 규칙이 휴대폰 조건 안).
 
 ## 8. 기술 구성
 - 스택: Vanilla HTML/CSS/JS(classic script, file://에서도 동작), three.js r186(`vendor/three/three.iife.js`). 외부 라이브러리는 그 밖에 없다.

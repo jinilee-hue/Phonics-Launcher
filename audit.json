@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-23",
+  "updated": "2026-11-26",
   "games": [
     "phonics-run",
     "puzzle",
@@ -569,6 +569,49 @@
         "phonics-run": [
           "ok",
           "표준"
+        ]
+      }
+    },
+    {
+      "id": "phone",
+      "name": "휴대폰 가로",
+      "desc": "휴대폰 가로(높이 500px 이하 터치)에서 누르는 것 40px 이상·글자 12px 이상·잘림/겹침/스크롤 없음, 세로로 들면 돌려 달라는 안내. 태블릿·PC는 그대로(2026-11-26)",
+      "cells": {
+        "phonics-run": [
+          "ok",
+          "44px·안내"
+        ],
+        "puzzle": [
+          "ok",
+          "44px·안내"
+        ],
+        "eye-catch": [
+          "ok",
+          "스크롤 제거·44px"
+        ],
+        "toy-catch": [
+          "ok",
+          "44px·안내"
+        ],
+        "croco": [
+          "ok",
+          "43px·이빨 3D 예외"
+        ],
+        "phonics-match": [
+          "ok",
+          "42px·안내"
+        ],
+        "magic-block": [
+          "ok",
+          "43px·칩 예외"
+        ],
+        "ring-ding-dong": [
+          "ok",
+          "44px·안내"
+        ],
+        "word-mashup": [
+          "ok",
+          "캔버스 UI 확대"
         ]
       }
     },
