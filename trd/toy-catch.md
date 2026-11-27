@@ -9,7 +9,7 @@ scope: FPR K Unit 1 첫소리 m·a·s·t(오답 c·d·f) · 게임에 직접 넣
 stack: Vanilla JS + three.js r186(IIFE 번들, 빌드 없음)
 repo: https://github.com/jinilee-hue/Toy-Catch
 url: https://jinilee-hue.github.io/Toy-Catch/
-updated: 2026-11-26
+updated: 2026-11-27
 ---
 
 # Toy Catch TRD
@@ -86,7 +86,7 @@ updated: 2026-11-26
 - 조작: DOWN은 패널 위 3D 버튼에 투명 HTML 버튼을 겹친 것(`#drop`). 조이스틱 판정 영역 `#joyHit`. 인형 탭은 그림의 불투명 부분만 인정(64px 알파 격자).
 - 예외 상태: 첫 터치 전에는 소리가 나지 않는다(브라우저 정책). 마이크·네트워크를 쓰지 않아 해당 예외가 없다. 움직임 줄이기 설정이면 금화 비행 없이 숫자만 바뀐다.
 - 나가기(`:972-975`): 게임·결과 → 타이틀, 타이틀 → 뒤로 가기(기록이 없으면 무반응).
-- 휴대폰 가로(높이 500px 이하 터치 화면, 2026-11-26): 상단 버튼 44px(타깃 알약 스피커 44px), START 148×52, 뽑기 버튼 누르는 곳 56px, 홈·PLAY AGAIN 48px, ×N 12.5px, MY FRIENDS 카드 폭을 줄여 ✕가 언어 토글과 안 겹침. 휴대폰을 세로로 들면 "Turn your phone sideways" 안내 화면. 태블릿·PC 화면은 그대로(모든 규칙이 휴대폰 조건 안).
+- 휴대폰 가로(높이 500px 이하 터치 화면, 2026-11-26~27, 배치는 PC와 같고 버튼만 확대): 집게 내리기(DOWN) 누르는 곳 128×88, 타깃 듣기 64, PLAY AGAIN·홈 64, 상단 44. START는 147×52(LEVEL 화면과 조이스틱 사이가 그만큼), 기계는 5% 작게. 버튼은 화면 가장자리에서 12px(아래 14px), 서로 8px 이상 떨어짐. 휴대폰을 세로로 들면 "Turn your phone sideways" 안내 (화면 짧은 변이 500px를 넘는 기기 — 태블릿 분할 화면 포함 — 에서는 안 뜸). 태블릿·PC 화면은 그대로(전후 위치 비교로 확인).
 
 ## 8. 기술 구성
 - 스택: Vanilla HTML/CSS/JS, 빌드 없음. three.js r186 + RoomEnvironment·RoundedBoxGeometry·TextGeometry 등을 rolldown으로 묶은 `vendor/three.iife.js`(`tools/three-entry.js`). 글꼴 Baloo 2(`css/font.css` 내장). 기계 텍스처는 캔버스로 그리고 그림·음성·BGM은 base64라 `file://`로 열어도 동작한다.
